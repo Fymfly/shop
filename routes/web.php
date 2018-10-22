@@ -71,5 +71,10 @@ Route::group(['prefix'=>'admin'],function(){
 
     // 管理员管理-个人信息
     Route::get('/personage_index','admin\PersonageController@personage_index')->name('personage_index');
+
+
+
+    // 测试
+    Route::get('/test','admin\TestController@test')->name('test');
 });
 

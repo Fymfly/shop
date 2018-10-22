@@ -53,12 +53,12 @@
 
 							<div class="login_icon"><img src="/img/Admin/login.png" /></div>
 
-							<form action="{{ route('dologin') }}">
+							<form action="{{ route('dologin') }}" method="post">  
 								<fieldset>
-									<!-- {{csrf_field()}} -->
+									{{csrf_field()}}
 									<ul>
-										<li class="frame_style form_error"><label class="user_icon"></label><input name="用户名" type="text" id="username" /><i>用户名</i></li>
-										<li class="frame_style form_error"><label class="password_icon"></label><input name="密码" type="password" id="userpwd" /><i>密码</i></li>
+										<li class="frame_style form_error"><label class="user_icon"></label><input name="user" type="text" id="username" /><i>用户名</i></li>
+										<li class="frame_style form_error"><label class="password_icon"></label><input name="pass" type="password" id="userpwd" /><i>密码</i></li>
 										<li class="frame_style form_error"><label class="Codes_icon"></label><input name="验证码" type="text" id="Codes_text" /><i>验证码</i>
 											<div class="Codes_region"></div>
 										</li>
@@ -72,7 +72,7 @@
 											<span class="lbl">保存密码</span>
 										</label>
 
-										<button type="button" class="width-35 pull-right btn btn-sm btn-primary" id="login_btn">
+										<button type="submit" class="width-35 pull-right btn btn-sm btn-primary" id="login_btn">
 											<i class="icon-key"></i>
 											登陆
 										</button>
@@ -106,31 +106,30 @@
 
 </html>
 <script>
-	$('#login_btn').on('click', function () {
-		var num = 0;
-		var str = "";
-		$("input[type$='text'],input[type$='password']").each(function (n) {
-			if ($(this).val() == "") {
+	// $('#login_btn').on('click', function () {
+	// 	var num = 0;
+	// 	var str = "";
+	// 	$("input[type$='text'],input[type$='password']").each(function (n) {
+	// 		if ($(this).val() == "") {
 
-				layer.alert(str += "" + $(this).attr("name") + "不能为空！\r\n", {
-					title: '提示框',
-					icon: 0,
-				});
-				num++;
-				return false;
-			}
-		});
-		if (num > 0) { return false; }
-		else {
-			layer.alert('登陆成功！', {
-				title: '提示框',
-				icon: 1,
-			});
-			location.href = "{{route('index')}}";
-			layer.close(index);
-		}
+	// 			layer.alert(str += "" + $(this).attr("name") + "不能为空！\r\n", {
+	// 				title: '提示框',
+	// 				icon: 0,
+	// 			});
+	// 			num++;
+	// 			return false;
+	// 		}
+	// 	});
+	// 	if (num > 0) { return false; }
+	// 	else {
+	// 		layer.alert('登陆成功！', {
+	// 			title: '提示框',
+	// 			icon: 1,
+	// 		});
+	// 		layer.close(index);
+	// 	}
 
-	});
+	// });
 	$(document).ready(function () {
 		$("input[type='text'],input[type='password']").blur(function () {
 			var $el = $(this);
