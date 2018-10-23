@@ -21,7 +21,25 @@ Route::get('/hello2','TestController@hello');
 // 前
 Route::group(['prefix'=>'host'],function(){
 
+    // 首页
     Route::get('/','host\IndexController@index')->name('index'); 
+
+
+    // 显示登录页面
+    Route::get('/login','host\LoginController@login')->name('login');
+    // 处理登录表单
+    Route::post('/dologin','host\LoginController@dologin')->name('dologin');
+    // 退出登录
+    Route::get('/logout','host\LoginController@logout')->name('logout');
+
+
+    // 显示注册页面
+    Route::get('/register','host\RegisterController@register')->name('register');
+    // 处理注册表单
+    Route::post('/doregist','host\RegisterController@doregist')->name('doregist');
+    // 发送短信验证码
+    Route::get('/sendmobilecode','host\RegisterController@sendmobilecode')->name('ajax-send-modbile-code');
+
 });
 
 
@@ -29,19 +47,10 @@ Route::group(['prefix'=>'host'],function(){
 // 后
 Route::group(['prefix'=>'admin'],function(){
 
-    // 首页
-    Route::get('/','admin\IndexController@index')->name('index');
-    Route::get('/home','admin\IndexController@home')->name('home');
+    Route::middleware(['login'])->group(function() {
 
-
-    // 显示登录页面
-    Route::get('/login','admin\LoginController@login')->name('login');
-    // 处理登录表单
-    Route::post('/dologin','admin\LoginController@dologin')->name('dologin');
-
-
-    // 产品管理-产品类表
-    Route::get('/blog_index','admin\BlogController@blog_index')->name('blog_index');
+        // 产品管理-产品类表
+    Route::get('/goods_index','admin\GoodsController@goods_index')->name('goods_index');
 
     // 产品管理-品牌管理
     Route::get('/brand_index','admin\BrandController@brand_index')->name('brand_index');
@@ -71,6 +80,23 @@ Route::group(['prefix'=>'admin'],function(){
 
     // 管理员管理-个人信息
     Route::get('/personage_index','admin\PersonageController@personage_index')->name('personage_index');
+
+    });
+
+    // 首页
+    Route::get('/','admin\IndexController@index')->name('aindex');
+    Route::get('/home','admin\IndexController@home')->name('home');
+
+
+    // 显示登录页面
+    Route::get('/alogin','admin\LoginController@alogin')->name('alogin');
+    // 处理登录表单
+    Route::post('/adologin','admin\LoginController@adologin')->name('adologin');
+    // 退出登录
+    Route::get('/alogout','admin\LoginController@alogout')->name('alogout');
+
+
+    
 
 
 

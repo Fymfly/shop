@@ -53,12 +53,12 @@
 
 							<div class="login_icon"><img src="/img/Admin/login.png" /></div>
 
-							<form action="{{ route('dologin') }}" method="post">  
+							<form action="{{ route('adologin') }}" method="post">  
 								<fieldset>
 									{{csrf_field()}}
 									<ul>
-										<li class="frame_style form_error"><label class="user_icon"></label><input name="user" type="text" id="username" /><i>用户名</i></li>
-										<li class="frame_style form_error"><label class="password_icon"></label><input name="pass" type="password" id="userpwd" /><i>密码</i></li>
+										<li class="frame_style form_error"><label class="user_icon"></label><input name="name" type="text" id="username" /><i>用户名</i></li>
+										<li class="frame_style form_error"><label class="password_icon"></label><input name="password" type="password" id="userpwd" /><i>密码</i></li>
 										<li class="frame_style form_error"><label class="Codes_icon"></label><input name="验证码" type="text" id="Codes_text" /><i>验证码</i>
 											<div class="Codes_region"></div>
 										</li>

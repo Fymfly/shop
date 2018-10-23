@@ -242,7 +242,7 @@ function link_operating(name,title){
 				 <li><a href="javascript:void(0" name="Systems.html" title="系统设置" class="iframeurl"><i class="icon-cog"></i>网站设置</a></li>
 				 <li><a href="javascript:void(0)" name="admin_info.html" title="个人信息" class="iframeurl"><i class="icon-user"></i>个人资料</a></li>
 				 <li class="divider"></li>
-				 <li><a href="{{route('login')}}" id="Exit_system"><i class="icon-off"></i>退出</a></li>
+				 <li><a href="{{route('alogout')}}" id="Exit_system"><i class="icon-off"></i>退出</a></li>
 				</ul>
 			   </li>
 	           <li class="purple">
@@ -361,7 +361,7 @@ function link_operating(name,title){
 				     <li class="home"><a href="javascript:void(0)" name="{{route('home')}}" class="iframeurl" title=""><i class="icon-home"></i><span class="menu-text"> 系统首页 </span></a></li>
                      <li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 产品管理 </span><b class="arrow icon-angle-down"></b></a>
 					   <ul class="submenu">
-                         <li class="home"><a  href="javascript:void(0)" name="{{route('blog_index')}}"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>产品类表</a></li>
+                         <li class="home"><a  href="javascript:void(0)" name="{{route('goods_index')}}"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>产品类表</a></li>
 						 <li class="home"><a  href="javascript:void(0)" name="{{route('brand_index')}}" title="品牌管理"  class="iframeurl"><i class="icon-double-angle-right"></i>品牌管理</a></li>
 						 <li class="home"><a href="javascript:void(0)" name="{{route('category_index')}}" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>分类管理</a></li>
 

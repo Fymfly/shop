@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>品优购，优质！优质！</title>
-	 <link rel="icon" href="assets//img/Host/favicon.ico">
+	 <link rel="icon" href="/assets/img/Host/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/css/Host/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/css/Host/pages-JD-index.css" />
@@ -24,7 +24,7 @@
 				<div class="shortcut">
 					<ul class="fl">
 						<li class="f-item">品优购欢迎您！</li>
-						<li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
+						<li class="f-item">请<a href="{{route('login')}}" target="_blank">登录</a>　<span><a href="{{route('register')}}" target="_blank">免费注册</a></span></li>
 					</ul>
 					<ul class="fr">
 						<li class="f-item">我的订单</li>
@@ -724,7 +724,7 @@
 								</div>
 							</dd>
 							<dd>
-								<a href="" class="pic"><img nsrc="assets//img/Host/like_02.png" alt="" /></a>
+								<a href="" class="pic"><img nsrc="/assets/img/Host/like_02.png" alt="" /></a>
 								<div class="like-text">
 									<p>三星（G5500）</p>
 									<p>移动联通双网通</p>
@@ -782,7 +782,7 @@
 								</div>
 							</dd>
 							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img nsrc="assets//img/Host/like_02.png" alt="" /></a>
+								<a href="http://sc.chinaz.com/" class="pic"><img nsrc="/assets/img/Host/like_02.png" alt="" /></a>
 								<div class="like-text">
 									<p>韩国所望紧致湿润精华露400ml</p>
 									<h3>¥896.00</h3>

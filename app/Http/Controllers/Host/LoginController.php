@@ -1,48 +1,48 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Host;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use App\Models\Admin;
+use App\Models\User;
 use Hash;
 
 class LoginController extends Controller
 {
-    
     // 显示登录页面
-    public function alogin() {
+    public function login() {
 
-        return view('admin.login.login');
+        return view('host.login.login');
     }
 
+
     // 处理登录表单
-    public function adologin(Request $req) {
+    public function dologin(Request $req) {
         // 先通过用户名到数据库查询信息
-        $admin = Admin::where('name',$req->name)->first();
+        $user = User::where('name',$req->name)->first();
         // echo 'sjdfksdf';
 
         // var_dump($admin);
         // exit;
         
         // 判断是否有这个账号
-        if($admin) {
+        if($user) {
 
             // 判断密码
             // 表单中的密码：$req->password
             // 数据库的密码：$admin->password (加密)
     
-            if( Hash::check($req->password , $admin->password)) {
+            if( Hash::check($req->password , $user->password)) {
 
                 // 把用户常用的数据保存到session
                 session([
-                    'id' => $admin->id,
-                    'name' => $admin->name,
+                    'id' => $user->id,
+                    'name' => $user->name,
                 ]);
 
-                // 登录成功 
-                return redirect()->route('aindex');
+                // 登录成功
+                return redirect()->route('index');
             } else {
                 // 密码错误
                 return back()->withErrors('密码错误!');
@@ -58,9 +58,8 @@ class LoginController extends Controller
 
 
     // 退出登录
-   public function alogout(){
-    session()->flush();
-    return redirect()->route('alogin');
-}  
-
+    public function logout(){
+        session()->flush();
+        return redirect()->route('login');
+    }  
 }
