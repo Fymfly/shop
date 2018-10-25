@@ -323,7 +323,7 @@ laydate({
  <script type="text/javascript">
         require.config({
             paths: {
-                echarts: './assets/dist'
+                echarts: '/assets/dist'
             }
         });
         require(

@@ -45,7 +45,7 @@
     </div>
      <div class="border clearfix">
        <span class="l_f">
-        <a href="picture-add.html" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
+        <a href="{{route('goods_create')}}" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
         <a href="javascript:ovid()" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
        </span>
        <span class="r_f">共：<b>2334</b>件商品</span>
@@ -80,24 +80,25 @@
 			</tr>
 		</thead>
 	<tbody>
-     <tr>
-     <?php foreach($goods as $v): ?>
+    <?php foreach($goods as $v): ?>
+    <tr>
         <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
         <td width="80px"><?php echo $v->num; ?></td>               
         <td width="250px"><u style="cursor:pointer" class="text-primary" onclick=""><?php echo $v->name; ?></u></td>
         <td width="100px"><?php echo $v->original_price; ?></td>
         <td width="100px"><?php echo $v->present_price; ?></td> 
         <td width="100px"><?php echo $v->region; ?></td>         
-        <td width="180px"><?php echo $v->is_audit; ?></td>
-        <td class="text-l"><?php echo $v->is_state; ?></td>
-        <td class="td-status"><span class="label label-success radius"><?php echo $v->num; ?></span></td>
+        <td width="180px"><?php echo $v->created_at; ?></td>
+        <td class="text-l"><?php echo $v->is_audit; ?></td>
+        <td class="td-status"><span class="label label-success radius"><?php echo $v->is_state; ?></span></td>
         <td class="td-manage">
         <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
+        <a title="编辑" onclick="member_edit('编辑','{{route('goods_edit',['id'=>$v->id])}}','4','','510')" href="{{route('goods_edit', ['id'=>$v->id])}}"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
+        <a title="删除" onclick="confirm('你确定要删除吗？')" href="{{route('goods_delete', ['id'=>$v->id])}}"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
        </td>
+	   <!-- onclick="confirm('你确定要删除吗？')" -->
+	</tr>
     <?php endforeach; ?>
-	  </tr>
     </tbody>
     </table>
     </div>     

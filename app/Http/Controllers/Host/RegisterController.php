@@ -83,9 +83,7 @@ class RegisterController extends Controller
         // 把表单中的手机号设置到 模型
         $user->mobile = $req->mobile;
         // $user->email = $req->email;
-       
-        
-
+ 
         // 保存到表中
         $user->save();
         // dd($user);

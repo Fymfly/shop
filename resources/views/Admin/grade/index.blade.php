@@ -84,15 +84,16 @@
 			</tr>
 		</thead>
 	<tbody>
+        @foreach($data as $v) 
 		<tr>
           <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1</td>
-          <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','500','400')">张三</u></td>
-          <td>男</td>
-          <td>13000000000</td>
-          <td>admin@mail.com</td>         
-          <td>2014-6-11 11:11:42</td>
-          <td>普通用户</td>
+          <td>{{ $v['id'] }}</td>
+          <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','500','400')">{{ $v['name'] }}</u></td>
+          <td>{{ $v['sex'] }}</td>
+          <td>{{ $v['mobile'] }}</td>
+          <td>{{ $v['email'] }}</td>         
+          <td>{{ $v['created_at'] }}</td>
+          <td>{{ @$v['grade'] }}</td>
           <td class="text-l">345</td>
           <td class="td-status"><span class="label label-success radius">已启用</span></td>
           <td class="td-manage">
@@ -100,70 +101,7 @@
           <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
           </td>
 		</tr>
-        <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>2</td>
-          <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张小泉','member-show.html','1031','500','400')">张小泉</u></td>
-          <td>男</td>
-          <td>13000000000</td>
-          <td>admin@mail.com</td>
-          <td>2014-6-11 11:11:42</td>
-          <td>普通用户</td>
-           <td class="text-l">1345</td>
-          <td class="td-status"><span class="label label-success radius">已启用</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check bigger-120"></i></a>       
-          <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-		</tr>
-         <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>3</td>
-          <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张小泉','member-show.html','10301','500','400')">张小泉</u></td>
-          <td>男</td>
-          <td>13000000000</td>
-          <td>admin@mail.com</td>
-          <td>2014-6-11 11:11:42</td>
-          <td>银牌用户</td>
-           <td class="text-l">645</td>
-          <td class="td-status"><span class="label label-success radius">已启用</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check bigger-120"></i></a>         
-          <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-		</tr>
-         <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>4</td>
-          <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张小泉','member-show.html','10001','500','400')">张小泉</u></td>
-          <td>男</td>
-          <td>13000000000</td>
-          <td>admin@mail.com</td>
-          <td>2014-6-11 11:11:42</td>
-          <td>银牌用户</td>
-           <td class="text-l">645</td>
-          <td class="td-status"><span class="label label-success radius">已启用</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check bigger-120"></i></a>       
-          <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-		</tr>
-         <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>5</td>
-          <td><u style="cursor:pointer" class="text-primary" onclick="member_show('张小泉','member-show.html','10001','500','400')">张小泉</u></td>
-          <td>男</td>
-          <td>13000000000</td>
-          <td>admin@mail.com</td>
-          <td>2014-6-11 11:11:42</td>
-          <td>银牌用户</td>
-           <td class="text-l">345</td>
-          <td class="td-status"><span class="label label-success radius">已启用</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>        
-          <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-		</tr>
+        @endforeach
       </tbody>
 	</table>
    </div>
@@ -237,7 +175,7 @@ function member_start(obj,id){
 /**************/
      require.config({
             paths: {
-                echarts: './assets/dist'
+                echarts: '/assets/dist'
             }
         });
         require(

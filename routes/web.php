@@ -49,43 +49,69 @@ Route::group(['prefix'=>'admin'],function(){
 
     Route::middleware(['login'])->group(function() {
 
+        // 首页
+        Route::get('/','admin\IndexController@index')->name('aindex');
+        Route::get('/home','admin\IndexController@home')->name('home'); 
+
         // 产品管理-产品类表
-    Route::get('/goods_index','admin\GoodsController@goods_index')->name('goods_index');
+        Route::get('/goods_index','admin\GoodsController@goods_index')->name('goods_index');
+        // 产品管理-产品类表（增加页面）
+        Route::get('/goods_create','admin\GoodsController@goods_create')->name('goods_create');
+        // 产品管理-产品类表（处理增加）
+        Route::post('/goods_docreate','admin\GoodsController@goods_docreate')->name('goods_docreate');
 
-    // 产品管理-品牌管理
-    Route::get('/brand_index','admin\BrandController@brand_index')->name('brand_index');
+        // 产品管理-产品类表（修改页面）
+        Route::get('/goods_edit/{id}','admin\GoodsController@goods_edit')->name('goods_edit');
+        // 产品管理-产品类表（处理修改）
+        Route::post('/goods_doedit{id}','admin\GoodsController@goods_doedit')->name('goods_doedit');
 
-    // 产品管理-分类管理
-    Route::get('/category_index','admin\CategoryController@category_index')->name('category_index');
-    Route::get('/category_add','admin\CategoryController@category_add')->name('category_add');
-
-
-
-    // 会员管理-会员列表
-    Route::get('/members_index','admin\MembersController@members_index')->name('members_index');
-
-    // 会员管理-等级管理
-    Route::get('/grade_index','admin\GradeController@grade_index')->name('grade_index');
-
-    // 会员管理-会员记录管理
-    Route::get('/record_index','admin\RecordController@record_index')->name('record_index');
+        // 产品管理-产品类表（删除）
+        Route::get('/goods_delete/{id}','admin\GoodsController@goods_delete')->name('goods_delete');
 
 
+        // 产品管理-品牌管理
+        Route::get('/brand_index','admin\BrandController@brand_index')->name('brand_index');
 
-    // 管理员管理-权限管理
-    Route::get('/privilege_index','admin\PrivilegeController@privilege_index')->name('privilege_index');
+        // 产品管理-分类管理
+        Route::get('/category_index','admin\CategoryController@category_index')->name('category_index');
+        Route::get('/category_add','admin\CategoryController@category_add')->name('category_add');
 
-    // 管理员管理-管理员列表
-    Route::get('/admin_index','admin\AdminController@admin_index')->name('admin_index');
 
-    // 管理员管理-个人信息
-    Route::get('/personage_index','admin\PersonageController@personage_index')->name('personage_index');
+
+        // 会员管理-会员列表
+        Route::get('/members_index','admin\MembersController@members_index')->name('members_index');
+        // 会员管理-会员列表（增加页面）
+        Route::get('/members_create','admin\MembersController@members_create')->name('members_create');
+        // 会员管理-会员列表（处理增加）
+        Route::post('/members_docreate','admin\MembersController@members_docreate')->name('members_docreate');
+
+        // 会员管理-会员列表（修改页面）
+        Route::get('/members_edit/{id}','admin\MembersController@members_edit')->name('members_edit');
+        // 会员管理-会员列表（处理修改）
+        Route::post('/members_doedit/{id}','admin\MembersController@members_doedit')->name('members_doedit');
+
+        // 会员管理-会员列表（删除）
+        Route::get('/members_delete/{id}','admin\MembersController@members_delete')->name('members_delete');
+
+
+        // 会员管理-等级管理
+        Route::get('/grade_index','admin\GradeController@grade_index')->name('grade_index');
+
+        // 会员管理-会员记录管理
+        Route::get('/record_index','admin\RecordController@record_index')->name('record_index');
+
+
+
+        // 管理员管理-权限管理
+        Route::get('/privilege_index','admin\PrivilegeController@privilege_index')->name('privilege_index');
+
+        // 管理员管理-管理员列表
+        Route::get('/admin_index','admin\AdminController@admin_index')->name('admin_index');
+
+        // 管理员管理-个人信息
+        Route::get('/personage_index','admin\PersonageController@personage_index')->name('personage_index');
 
     });
-
-    // 首页
-    Route::get('/','admin\IndexController@index')->name('aindex');
-    Route::get('/home','admin\IndexController@home')->name('home');
 
 
     // 显示登录页面
