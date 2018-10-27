@@ -109,9 +109,15 @@ class MembersController extends Controller
 
 
     // 删除
-    public function members_delete($id) {
+    public function members_delete(Request  $req, $id) {
 
         Members::destroy($id);
+
+        $grade_id = $req->input('grade_id');
+
+        DB::table('members_grades')
+        ->where('members_id',$id)
+        ->deldet(['grade_id'=>$grade_id]);
         return redirect()->route('members_index');
     }
 }

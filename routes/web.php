@@ -74,8 +74,18 @@ Route::group(['prefix'=>'admin'],function(){
 
         // 产品管理-分类管理
         Route::get('/category_index','admin\CategoryController@category_index')->name('category_index');
-        Route::get('/category_add','admin\CategoryController@category_add')->name('category_add');
+        // 产品管理-分类管理（增加页面）
+        Route::get('/category_create','admin\CategoryController@category_create')->name('category_create');
+        Route::get('/category_createt','admin\CategoryController@category_createt')->name('category_createt');
+        // 产品管理-分类管理（处理增加）
+        Route::post('/category_docreate','admin\CategoryController@category_docreate')->name('category_docreate');
+        Route::post('/category_docreatet','admin\CategoryController@category_docreatet')->name('category_docreatet');
+        Route::get('/category_delete','admin\CategoryController@category_delete')->name('category_delete');
 
+        // 产品管理-分类管理（修改页面）
+        Route::get('/category_edit/{id}','admin\CategoryController@category_edit')->name('category_edit');
+        // 产品管理-分类管理（处理修改）
+        Route::post('/category_doedit/{id}','admin\CategoryController@category_doedit')->name('category_doedit');
 
 
         // 会员管理-会员列表

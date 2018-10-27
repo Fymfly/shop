@@ -21,4 +21,28 @@ class Grade extends Model
         }
         return $user;
     }
+
+
+
+    // 先判断会员表里的积分是属于等级表里的那一块
+    // public function getAllGrade() {
+
+    //     $members = Members::all();
+    //     // dd($members);
+    //     for($i=0;$i<count($members);$i++) {
+
+    //         $integral = $members[$i]->integral;
+    //         // dd($integral);                              
+    //         // $grade = Grade::where('integral','<',$integral)->first(['integral']);
+    //         if($integral) {
+
+    //             $grade = Grade::where('integral','>',$integral)->first(['integral']);
+
+    //             $members[$i][$grade] = $grade;
+
+    //             dd($grade);
+    //         }
+    //         return $members;
+    //     }
+    // }
 }
