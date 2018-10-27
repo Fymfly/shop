@@ -7,25 +7,25 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
- <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/style.css"/>       
-        <link rel="stylesheet" href="assets/css/ace.min.css" />
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-        <link href="Widget/icheck/icheck.css" rel="stylesheet" type="text/css" />
+ <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/Admin/style.css"/>       
+        <link rel="stylesheet" href="/assets/css/ace.min.css" />
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+        <link href="/Widget/icheck/icheck.css" rel="stylesheet" type="text/css" />
 		<!--[if IE 7]>
-		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+		  <link rel="stylesheet" href="/assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
         <!--[if lte IE 8]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
 		<![endif]-->
-	    <script src="js/jquery-1.9.1.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/typeahead-bs2.min.js"></script>
-         <script src="assets/layer/layer.js" type="text/javascript"></script>
-        <script type="text/javascript" src="Widget/swfupload/swfupload.js"></script>
-        <script type="text/javascript" src="Widget/swfupload/swfupload.queue.js"></script>
-        <script type="text/javascript" src="Widget/swfupload/swfupload.speed.js"></script>
-        <script type="text/javascript" src="Widget/swfupload/handlers.js"></script>
+	    <script src="/js/Admin/jquery-1.9.1.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/typeahead-bs2.min.js"></script>
+         <script src="/assets/layer/layer.js" type="text/javascript"></script>
+        <script type="text/javascript" src="/Widget/swfupload/swfupload.js"></script>
+        <script type="text/javascript" src="/Widget/swfupload/swfupload.queue.js"></script>
+        <script type="text/javascript" src="/Widget/swfupload/swfupload.speed.js"></script>
+        <script type="text/javascript" src="/Widget/swfupload/handlers.js"></script>
 </head>
 
 <body>
@@ -33,12 +33,14 @@
  <div id="add_brand" class="clearfix">
  <div class="left_add">
    <div class="title_name">添加品牌</div>
+   <form action="{{route('brand_docreate')}}" method="post" >
+   @csrf
    <ul class="add_conent">
-    <li class=" clearfix"><label class="label_name"><i>*</i>品牌名称：</label> <input name="" type="text" class="add_text"/></li>
+    <li class=" clearfix"><label class="label_name"><i>*</i>品牌名称：</label> <input name="name" type="text" class="add_text"/></li>
     <li class=" clearfix"><label class="label_name"><i>*</i>品牌序号：</label> <input name="" type="text" class="add_text" style="width:80px"/></li>
     <li class=" clearfix"><label class="label_name">品牌图片：</label>
            <div class="demo l_f">
-	           <div class="logobox"><div class="resizebox"><img src="images/image.png" width="100px" alt="" height="100px"/></div></div>	
+	           <div class="logobox"><div class="resizebox"><img src="/img/Admin/image.png" width="100px" alt="" height="100px"/></div></div>	
                <div class="logoupload">
                   <div class="btnbox"><a id="uploadBtnHolder" class="uploadbtn" href="javascript:;">上传替换</a></div>
                   <div style="clear:both;height:0;overflow:hidden;"></div>
@@ -50,15 +52,22 @@
                       
            </div> <div class="prompt"><p>图片大小<b>120px*60px</b>图片大小小于5MB,</p><p>支持.jpg;.gif;.png;.jpeg格式的图片</p></div>  
     </li>
-         <li class=" clearfix"><label class="label_name"><i>*</i>所属地区：</label> <input name="" type="text" class="add_text" style="width:120px"/></li>
-         <li class=" clearfix"><label class="label_name">品牌描述：</label> <textarea name="" cols="" rows="" class="textarea" onkeyup="checkLength(this);"></textarea><span class="wordage">剩余字数：<span id="sy" style="color:Red;">500</span>字</span></li>
+         <li class=" clearfix"><label class="label_name"><i>*</i>所属地区：</label> <input name="region" type="text" class="add_text" style="width:120px"/></li>
+         <li class=" clearfix"><label class="label_name">品牌描述：</label> <textarea name="content" cols="" rows="" class="textarea" onkeyup="checkLength(this);"></textarea><span class="wordage">剩余字数：<span id="sy" style="color:Red;">500</span>字</span></li>
          <li class=" clearfix"><label class="label_name"><i>*</i>显示状态：</label> 
-         <label><input name="checkbox" type="radio" class="ace" checked="checked"><span class="lbl">显示</span></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <label><input type="radio" class="ace" name="checkbox"><span class="lbl">不显示</span></label>
+         <label><input name="is_show" type="radio" class="ace" checked="checked"><span class="lbl">显示</span></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <label><input type="radio" class="ace" name="is_show"><span class="lbl">不显示</span></label>
          </li>
    </ul>
- </div>
- <div class="right_add">
+   <div class="">
+       <input type="submit" class="btn btn-warning">
+       <input  type="reset" value="取消" class="btn btn-warning"/></div>
+    <!-- <button type="submit">提交</button> -->
+</div>
+
+   </form>
+  
+ <!-- <div class="right_add">
   <div class="title_name">添加商品</div>
  
     <div class="p_select_list">
@@ -88,12 +97,12 @@
         </div>
       </div>
  </div>
- </div>
-  <div class="button_brand"><input name="" type="button"  class="btn btn-warning" value="保存"/><input name="" type="reset" value="取消" class="btn btn-warning"/></div>
+ </div> -->
+  
 </div>
 </body>
 </html>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
      $(document).ready(function(){
  $(".left_add").height($(window).height()-60); 
   $(".right_add").width($(window).width()-600);
@@ -254,8 +263,8 @@ function successAction(fileInfo) {
 var swfImageUpload;
 $(document).ready(function() {
 	var settings = {
-		flash_url : "Widget/swfupload/swfupload.swf",
-		flash9_url : "Widget/swfupload/swfupload_fp9.swf",
+		flash_url : "/Widget/swfupload/swfupload.swf",
+		flash9_url : "/Widget/swfupload/swfupload_fp9.swf",
 		upload_url: "upload.php",// 接受上传的地址
 		file_size_limit : "5MB",// 文件大小限制
 		file_types : "*.jpg;*.gif;*.png;*.jpeg;",// 限制文件类型
@@ -265,7 +274,7 @@ $(document).ready(function() {
 		custom_settings : {},
 		debug: false,
 		// Button settings
-		button_image_url: "Widget/swfupload/upload-btn.png",
+		button_image_url: "/Widget/swfupload/upload-btn.png",
 		button_width: "95",
 		button_height: "30 ",
 		button_placeholder_id: 'uploadBtnHolder',
@@ -303,4 +312,4 @@ $(document).ready(function() {
 	};
 	swfImageUpload = new SWFUpload(settings);
 });
-</script>
+</script> -->

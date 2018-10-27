@@ -24,19 +24,10 @@ class GoodsController extends Controller
     // 处理添加
     public function goods_docreate(Request $req) {
 
-    //     $num = $req->input('num');
-    //     $name = $req->input('name');
-    //     $original_price = $req->input('original_price');
-    //     $present_price = $req->input('present_price');
-
-    //    $data =  DB::insert("insert into goods('num,name,original_price,present_price') values(?,?)",[$num,$name,$original_price,$present_price]);
     //     return $data;
         $goods = new Goods;
         $goods = Goods::create( $req->all() );
-        // dd($goods);
-        // $userId = $goods->session('id');
-        // echo $goods->id;
-        
+
         $goods->save();
         // dd($user);
         return redirect()->route('goods_index');

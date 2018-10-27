@@ -71,6 +71,11 @@ Route::group(['prefix'=>'admin'],function(){
 
         // 产品管理-品牌管理
         Route::get('/brand_index','admin\BrandController@brand_index')->name('brand_index');
+        // 产品管理-品牌管理（增加页面）
+        Route::get('/brand_create','admin\BrandController@brand_create')->name('brand_create');
+        // 产品管理-品牌管理（处理增加）
+        Route::post('/brand_docreate','admin\BrandController@brand_docreate')->name('brand_docreate');
+
 
         // 产品管理-分类管理
         Route::get('/category_index','admin\CategoryController@category_index')->name('category_index');
