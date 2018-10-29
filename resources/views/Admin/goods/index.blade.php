@@ -93,14 +93,14 @@
         <td class="td-status"><span class="label label-success radius"><?php echo $v->is_state; ?></span></td>
         <td class="td-manage">
         <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','{{route('goods_edit',['id'=>$v->id])}}','4','','510')" href="{{route('goods_edit', ['id'=>$v->id])}}"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" onclick="confirm('你确定要删除吗？')" href="{{route('goods_delete', ['id'=>$v->id])}}"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
+        <a title="编辑" onclick="member_edit('编辑','','4','','510')" href="{{route('goods_edit', ['id'=>$v->id])}}"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
+        <a title="删除" onclick="confirm('你确定要删除吗？')" href="{{route('goods_delete', ['id'=>$v->id])}}" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
        </td>
 	   <!-- onclick="confirm('你确定要删除吗？')" -->
 	</tr>
     <?php endforeach; ?>
     </tbody>
-    </table>
+    </table> 
     </div>     
   </div>
  </div>

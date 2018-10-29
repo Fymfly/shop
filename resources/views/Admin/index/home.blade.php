@@ -13,16 +13,16 @@
         <!--[if lte IE 8]>
 		  <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
 		<![endif]-->
-		<script src="/js/Admin/assets/js/ace-extra.min.js"></script>
+		<script src="/assets/js/ace-extra.min.js"></script>
 		<!--[if lt IE 9]>
 		<script src="/js/Admin/assets/js/html5shiv.js"></script>
 		<script src="/js/Admin/assets/js/respond.min.js"></script>
 		<![endif]-->
         		<!--[if !IE]> -->
-		<script src="/js/Admin/assets/js/jquery.min.js"></script>        
+		<script src="/assets/js/jquery.min.js"></script>        
 		<!-- <![endif]-->
-           	<script src="/js/Admin/assets/dist/echarts.js"></script>
-        <script src="/js/Admin/assets/js/bootstrap.min.js"></script>            
+           	<script src="/assets/dist/echarts.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>            
        <title></title>
        </head>		
 <body>

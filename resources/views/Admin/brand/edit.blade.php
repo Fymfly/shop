@@ -27,6 +27,7 @@
         <script type="text/javascript" src="/Widget/swfupload/swfupload.speed.js"></script>
         <script type="text/javascript" src="/Widget/swfupload/handlers.js"></script>
         
+        <script type="text/javascript" src="/js/Admin/jquery.min.js"></script>
 </head>
 
 <body>
@@ -34,15 +35,16 @@
  <div id="add_brand" class="clearfix">
  <div class="left_add">
    <div class="title_name">添加品牌</div>
-   <form action="{{route('brand_docreate')}}" method="post" enctype=multipart/form-data>
+   <form action="{{route('brand_doedit',['id'=>$brand->id])}}" method="post" enctype=multipart/form-data>
    @csrf
    <ul class="add_conent">
-    <li class=" clearfix"><label class="label_name"><i>*</i>品牌名称：</label> <input name="name" type="text" class="add_text"/></li>
+    <li class=" clearfix"><label class="label_name"><i>*</i>品牌名称：</label> <input value="{{$brand->name}}" name="name" type="text" class="add_text"/></li>
     <li class="clearfix"><label class="label_name">品牌图片：</label>
-        <input type="file" name="logo" id="" class="preview">
+    <img src="{{Storage::url( $brand->logo)}}" alt="" width="100px">
+        <input type="file" name="logo" id="" class="preview" value="">
     </li>
-         <li class=" clearfix"><label class="label_name"><i>*</i>所属地区：</label> <input name="region" type="text" class="add_text" style="width:120px"/></li>
-         <li class=" clearfix"><label class="label_name">品牌描述：</label> <textarea name="content" cols="" rows="" class="textarea" onkeyup="checkLength(this);"></textarea><span class="wordage">剩余字数：<span id="sy" style="color:Red;">500</span>字</span></li>
+         <li class=" clearfix"><label class="label_name"><i>*</i>所属地区：</label> <input value="{{$brand->region}}" name="region" type="text" class="add_text" style="width:120px"/></li>
+         <li class=" clearfix"><label class="label_name">品牌描述：</label> <textarea value=""  name="content" cols="" rows="" class="textarea" onkeyup="checkLength(this);">{{$brand->content}}</textarea><span class="wordage">剩余字数：<span id="sy" style="color:Red;">500</span>字</span></li>
          <li class=" clearfix"><label class="label_name"><i>*</i>显示状态：</label> 
          <label><input name="is_show" type="radio" class="ace" checked="checked"><span class="lbl">显示</span></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <label><input type="radio" class="ace" name="is_show"><span class="lbl">不显示</span></label>

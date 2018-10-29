@@ -84,16 +84,16 @@
           <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
           <td width="80px">{{$v->id}}</td>
           <td width="50px"><input type="text" class="input-text text-c" value="1" style="width:60px"></td>
-          <td><img src="/products/logo/156.jpg"  width="130"/></td>
+          <td><img src="{{ Storage::url( $v->logo) }}" width="100" height="100"/></td>
           <td><a href="javascript:ovid()" name="Brand_detailed.html" style="cursor:pointer" class="text-primary brond_name" onclick="generateOrders('561');" title="">{{$v->name}}</a></td>
           <td>{{$v->region}}</td>
-          <td class="text-l">{{$v->content}}</td>
+          <td class="text-l">{{$v->content}}</td> 
           <td>{{$v->created_at}}</td>
           <td class="td-status"><span class="label label-success radius">已启用</span></td>
           <td class="td-manage">
           <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-          <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-          <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
+          <a title="编辑" href="{{route('brand_edit', ['id'=>$v->id])}}"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
+          <a title="删除" onclick="confirm('你确定要删除吗？')" href="{{route('brand_delete', ['id'=>$v->id])}}"  class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
           </td>
 		</tr>
     <?php endforeach; ?>

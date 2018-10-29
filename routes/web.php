@@ -76,6 +76,14 @@ Route::group(['prefix'=>'admin'],function(){
         // 产品管理-品牌管理（处理增加）
         Route::post('/brand_docreate','admin\BrandController@brand_docreate')->name('brand_docreate');
 
+        // 产品管理-品牌管理（修改页面）
+        Route::get('/brand_edit/{id}','admin\BrandController@brand_edit')->name('brand_edit');
+        // 产品管理-品牌管理（处理修改）
+        Route::post('/brand_doedit/{id}','admin\BrandController@brand_doedit')->name('brand_doedit');
+
+        // 产品管理-品牌管理（删除）
+        Route::get('/brand_delete/{id}','admin\BrandController@brand_delete')->name('brand_delete');
+
 
         // 产品管理-分类管理
         Route::get('/category_index','admin\CategoryController@category_index')->name('category_index');
