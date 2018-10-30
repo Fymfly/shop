@@ -5,24 +5,24 @@
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
- <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/style.css"/>       
-        <link href="assets/css/codemirror.css" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/ace.min.css" />
-        <link rel="stylesheet" href="font/css/font-awesome.min.css" />
+ <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/Admin/style.css"/>       
+        <link href="/assets/css/codemirror.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/ace.min.css" />
+        <link rel="stylesheet" href="/font/css/font-awesome.min.css" />
         <!--[if lte IE 8]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
 		<![endif]-->
-		<script src="js/jquery-1.9.1.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/typeahead-bs2.min.js"></script>  
-        <script src="js/lrtk.js" type="text/javascript" ></script>	         	
-		<script src="assets/js/jquery.dataTables.min.js"></script>
-		<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
-        <script src="assets/layer/layer.js" type="text/javascript" ></script>          
-        <script src="assets/laydate/laydate.js" type="text/javascript"></script>
-        <script src="js/H-ui.js" type="text/javascript"></script>
-        <script src="js/displayPart.js" type="text/javascript"></script>
+		<script src="/js/Admin/jquery-1.9.1.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+		<script src="/assets/js/typeahead-bs2.min.js"></script>  
+        <script src="/js/Admin/lrtk.js" type="text/javascript" ></script>	         	
+		<script src="/assets/js/jquery.dataTables.min.js"></script>
+		<script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+        <script src="/assets/layer/layer.js" type="text/javascript" ></script>          
+        <script src="/assets/laydate/laydate.js" type="text/javascript"></script>
+        <script src="/js/Admin/H-ui.js" type="text/javascript"></script>
+        <script src="/js/Admin/displayPart.js" type="text/javascript"></script>
 <title>文章管理</title>
 </head>
 
@@ -57,7 +57,7 @@
  <div class="Ads_list">
     <div class="border clearfix">
        <span class="l_f">
-        <a href="article_add.html"  title="添加文章" id="add_page" class="btn btn-warning"><i class="fa fa-plus"></i> 添加文章</a>
+        <a href="{{route('articlelist_create')}}"  title="添加文章" id="add_page" class="btn btn-warning"><i class="fa fa-plus"></i> 添加文章</a>
         <a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
        </span>
        <span class="r_f">共：<b>45</b>条文章</span>
@@ -68,7 +68,6 @@
 		 <tr>
 				<th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
 				<th width="80px">ID</th>
-                <th  width="80px">排序</th>
 				<th width="100">所属分类</th>
 				<th width="220px">标题</th>
 				<th width="">简介</th>
@@ -78,48 +77,21 @@
 			</tr>
 		</thead>
         <tbody>
+        @foreach($articlelist as $v)
          <tr>
           <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>12</td>
-          <td>2</td>
-          <td>帮助中心</td>
-          <td> 订单已提交成功，如何付款？</td>
-          <td class="displayPart" displayLength="60">付款方式分为以下几种：（注：先款订单请您在订单提交后24小时内完成支付， 否则订单会自动取消）</td>
-          <td>2016-7-25 12:34</td>
-          <td>显示</td>
+          <td>{{$v->id}}</td>
+          <td>{{$v->article_cate_id}}</td>
+          <td>{{$v->title}}</td>
+          <td>{{$v->content}}</td>
+          <td>{{$v->created_at}}</td>
+          <td>{{$v->is_show}}</td>
           <td class="td-manage">   
-           <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-           <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
+           <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="{{route('articlelist_edit', ['id'=>$v->id])}}"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
+           <a title="删除" onclick="confirm('你确定要删除吗？')" href="{{route('articlelist_delete',['id'=>$v->id])}}" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
           </td>
          </tr>
-         <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>12</td>
-          <td>3</td>
-          <td>帮助中心</td>
-          <td> 我所在的地区支持货到付款吗？</td>
-          <td class="displayPart" displayLength="60">付款方式分为以下几种：（注：先款订单请您在订单提交后24小时内完成支付， 否则订单会自动取消）</td>
-          <td>2016-7-25 12:34</td>
-          <td>未显示</td>
-          <td class="td-manage">   
-           <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-           <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-         </tr>
-         <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>12</td>
-          <td>1</td>
-          <td>帮助中心</td>
-          <td> 支付方式有哪些？如何支付？</td>
-          <td class="displayPart" displayLength="60">付款方式分为以下几种：（注：先款订单请您在订单提交后24小时内完成支付， 否则订单会自动取消）</td>
-          <td>2016-7-25 12:34</td>
-          <td>待发布</td>
-          <td class="td-manage">   
-           <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-           <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-         </tr>
+         @endforeach
         </tbody>
        </table>    
      </div>

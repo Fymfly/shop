@@ -69,6 +69,7 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/goods_delete/{id}','admin\GoodsController@goods_delete')->name('goods_delete');
 
 
+
         // 产品管理-品牌管理
         Route::get('/brand_index','admin\BrandController@brand_index')->name('brand_index');
         // 产品管理-品牌管理（增加页面）
@@ -134,6 +135,40 @@ Route::group(['prefix'=>'admin'],function(){
         // 管理员管理-个人信息
         Route::get('/personage_index','admin\PersonageController@personage_index')->name('personage_index');
 
+
+
+        // 文章管理-文章列表
+        Route::get('/articlelist_index','admin\ArticlelistController@articlelist_index')->name('articlelist_index');
+
+        // 文章管理-文章列表（显示添加）
+        Route::get('/articlelist_create','admin\ArticlelistController@articlelist_create')->name('articlelist_create');
+        // 文章管理-文章列表（处理添加）
+        Route::post('/articlelist_docreate','admin\ArticlelistController@articlelist_docreate')->name('articlelist_docreate');
+
+        // 文章管理-文章列表（显示修改）
+        Route::get('/articlelist_edit/{id}','admin\ArticlelistController@articlelist_edit')->name('articlelist_edit');
+        // 文章管理-文章列表（处理修改）
+        Route::post('/articlelist_doedit/{id}','admin\ArticlelistController@articlelist_doedit')->name('articlelist_doedit');
+
+        // 文章管理-文章列表（删除）
+        Route::get('/articlelist_delete/{id}','admin\ArticlelistController@articlelist_delete')->name('articlelist_delete');
+
+
+        // 文章管理-分类管理
+        Route::get('/articlecate_index','admin\ArticlecateController@articlecate_index')->name('articlecate_index');
+
+        // 文章管理-分类管理（添加页面）
+        Route::get('/articlecate_create','admin\ArticlecateController@articlecate_create')->name('articlecate_create');
+        // 文章管理-分类管理（处理添加）
+        Route::post('/articlecate_docreate','admin\ArticlecateController@articlecate_docreate')->name('articlecate_docreate');
+
+        // 文章管理-分类管理（修改页面）
+        Route::get('/articlecate_edit/{id}','admin\ArticlecateController@articlecate_edit')->name('articlecate_edit');
+        // 文章管理-分类管理（处理修改）
+        Route::post('/articlecate_doedit/{id}','admin\ArticlecateController@articlecate_doedit')->name('articlecate_doedit');
+
+        // 文章管理-分类管理（删除）
+        Route::get('/articlecate_delete/{id}','admin\ArticlecateController@articlecate_delete')->name('articlecate_delete');
     });
 
 

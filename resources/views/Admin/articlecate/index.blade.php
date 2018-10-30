@@ -5,22 +5,22 @@
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
- <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/style.css"/>       
-        <link href="assets/css/codemirror.css" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/ace.min.css" />
-        <link rel="stylesheet" href="font/css/font-awesome.min.css" />
+ <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/Admin/style.css"/>       
+        <link href="/assets/css/codemirror.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/ace.min.css" />
+        <link rel="stylesheet" href="/font/css/font-awesome.min.css" />
         <!--[if lte IE 8]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
 		<![endif]-->
-		<script src="js/jquery-1.9.1.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/typeahead-bs2.min.js"></script>           	
-		<script src="assets/js/jquery.dataTables.min.js"></script>
-		<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
-        <script src="assets/layer/layer.js" type="text/javascript" ></script>          
-        <script src="js/H-ui.js" type="text/javascript"></script>
-        <script src="js/displayPart.js" type="text/javascript"></script>
+		<script src="/js/Admin/jquery-1.9.1.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+		<script src="/assets/js/typeahead-bs2.min.js"></script>           	
+		<script src="/assets/js/jquery.dataTables.min.js"></script>
+		<script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+        <script src="/assets/layer/layer.js" type="text/javascript" ></script>          
+        <script src="/js/Admin/H-ui.js" type="text/javascript"></script>
+        <script src="/js/Admin/displayPart.js" type="text/javascript"></script>
 <title>文章分类</title>
 </head>
 
@@ -29,7 +29,7 @@
  <div class="sort_style">
   <div class="border clearfix">
        <span class="l_f">
-        <a href="javascript:ovid()"id="add_page" class="btn btn-warning" onclick="add_article_sort()"><i class="fa fa-plus"></i> 添加分类</a>
+        <a href="{{route('articlecate_create')}}"id="add_page" class="btn btn-warning"><i class="fa fa-plus"></i> 添加分类</a>
         <a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
        </span>
        <span class="r_f">共：<b>5</b>分类</span>
@@ -41,7 +41,6 @@
 		 <tr>
 				<th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
 				<th width="80px">ID</th>
-                <th width="80px">排序</th>
 				<th width="150px">分类名称</th>
 				<th width="">简介</th>
 				<th width="150px">添加时间</th>
@@ -50,58 +49,19 @@
 			</tr>
 		</thead>
         <tbody>
+        @foreach ($articlecate as $v)
          <tr>
           <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1234</td>
-          <td>1</td>
-          <td>帮助中心</td>
-          <td class="displayPart" displayLength="60">帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心</td>
-          <td>2016-7-25</td>
+          <td>{{$v->id}}</td>
+          <td>{{$v->name}}</td>
+          <td class="displayPart" displayLength="60">{{$v->content}}</td>
+          <td>{{$v->created_at}}</td>
           <td>启用</td>          
           <td class="td-manage">   
-           <a title="编辑" onclick="member_edit('510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-           <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
+           <a title="编辑" href="{{route('articlecate_edit',['id'=>$v->id])}}"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
+           <a title="删除" onclick="confirm('你确定要删除吗？')" href="{{route('articlecate_delete',['id'=>$v->id])}}"  onclick="member_del(this,'1')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
           </td>
-         </tr>
-          <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1234</td>
-          <td>1</td>
-          <td>帮助中心</td>
-          <td class="displayPart" displayLength="60">帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心</td>
-          <td>2016-7-25</td>
-          <td>启用</td>          
-          <td class="td-manage">   
-           <a title="编辑" onclick="member_edit('510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-           <a title="删除" href="javascript:;"  onclick="member_del(this,'3')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-         </tr>
-          <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1234</td>
-          <td>1</td>
-          <td>帮助中心</td>
-          <td class="displayPart" displayLength="60">帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心</td>
-          <td>2016-7-25</td>
-          <td>启用</td>          
-          <td class="td-manage">   
-           <a title="编辑" onclick="member_edit('510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-           <a title="删除" href="javascript:;"  onclick="member_del(this,'4')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-         </tr>
-          <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1234</td>
-          <td>1</td>
-          <td>帮助中心</td>
-          <td class="displayPart" displayLength="60">帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心</td>
-          <td>2016-7-25</td>
-          <td>启用</td>          
-          <td class="td-manage">   
-           <a title="编辑" onclick="member_edit('510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-           <a title="删除" href="javascript:;"  onclick="member_del(this,'5')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-         </tr>
+        @endforeach
         </tbody>
         </table>
      </div>

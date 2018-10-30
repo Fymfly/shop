@@ -416,8 +416,8 @@ function link_operating(name,title){
 						</li>
 						<li><a href="#" class="dropdown-toggle"><i class="icon-bookmark"></i><span class="menu-text"> 文章管理 </span><b class="arrow icon-angle-down"></b></a>
 							<ul class="submenu">
-								<li class="home"><a href="javascript:void(0)" name="article_list.html" title="文章列表" class="iframeurl"><i class="icon-double-angle-right"></i>文章列表</a></li>
-                                <li class="home"><a href="javascript:void(0)" name="article_Sort.html" title="分类管理" class="iframeurl"><i class="icon-double-angle-right"></i>分类管理</a></li>
+								<li class="home"><a href="javascript:void(0)" name="{{route('articlelist_index')}}" title="文章列表" class="iframeurl"><i class="icon-double-angle-right"></i>文章列表</a></li>
+                                <li class="home"><a href="javascript:void(0)" name="{{route('articlecate_index')}}" title="分类管理" class="iframeurl"><i class="icon-double-angle-right"></i>分类管理</a></li>
 							</ul>
 						</li>
                         	<li><a href="#" class="dropdown-toggle"><i class="icon-cogs"></i><span class="menu-text"> 系统管理 </span><b class="arrow icon-angle-down"></b></a>

@@ -6996,7 +6996,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
             //编辑器不能为空内容
 
             if (domUtils.isEmptyNode(me.body)) {
-                me.body.innerHTML = '<p>' + (browser.ie ? '' : '<br/>') + '</p>';
+                me.body.innerHTML = '<div>' + (browser.ie ? '' : '<br/>') + '</div>';
             }
             //如果要求focus, 就把光标定位到内容开始
             if (options.focus) {
@@ -7332,7 +7332,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
                 return  node.tagName == 'DIV' && node.getAttribute('cdata_tag');
             }
             //给文本或者inline节点套p标签
-            if (me.options.enterTag == 'p') {
+            if (me.options.enterTag == '') {
 
                 var child = this.body.firstChild, tmpNode;
                 if (!child || child.nodeType == 1 &&
@@ -7340,10 +7340,10 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
                         domUtils.isCustomeNode(child)
                         )
                     && child === this.body.lastChild) {
-                    this.body.innerHTML = '<p>' + (browser.ie ? '&nbsp;' : '<br/>') + '</p>' + this.body.innerHTML;
+                    this.body.innerHTML = '' + (browser.ie ? '&nbsp;' : '<br/>') + '' + this.body.innerHTML;
 
                 } else {
-                    var p = me.document.createElement('p');
+                    var p = me.document.createElement('');
                     while (child) {
                         while (child && (child.nodeType == 3 || child.nodeType == 1 && dtd.p[child.tagName] && !dtd.$cdata[child.tagName])) {
                             tmpNode = child.nextSibling;
@@ -7352,11 +7352,11 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
                         }
                         if (p.firstChild) {
                             if (!child) {
-                                me.body.appendChild(p);
+                                me.body.appendChild();
                                 break;
                             } else {
-                                child.parentNode.insertBefore(p, child);
-                                p = me.document.createElement('p');
+                                child.parentNode.insertBefore(child);
+                                p = me.document.createElement('');
                             }
                         }
                         child = child.nextSibling;
@@ -9947,7 +9947,7 @@ var LocalStorage = UE.LocalStorage = (function () {
 UE.plugins['defaultfilter'] = function () {
     var me = this;
     me.setOpt({
-        'allowDivTransToP':true,
+        'allowDivTransToP':false,
         'disabledTableInTable':true
     });
     //默认的过滤处理
@@ -16518,7 +16518,7 @@ UE.plugins['enterkey'] = function() {
                     return;
                 }
             }
-            if (tag == 'p') {
+            if (tag == 'br') {
 
 
                 if (!browser.ie) {
@@ -16529,11 +16529,11 @@ UE.plugins['enterkey'] = function() {
                     //trace:2431
                     if (!start && !browser.opera) {
 
-                        me.document.execCommand('formatBlock', false, '<p>');
+                        me.document.execCommand('formatBlock', false, '<br>');
 
                         if (browser.gecko) {
                             range = me.selection.getRange();
-                            start = domUtils.findParentByTagName(range.startContainer, 'p', true);
+                            start = domUtils.findParentByTagName(range.startContainer, 'br', true);
                             start && domUtils.removeDirtyAttr(start);
                         }
 

@@ -49,7 +49,7 @@ class GoodsController extends Controller
         // 为模型填充表单数据
         $goods->fill( $req->all() );
 
-        // 保存到数据库
+        // 保存到数据库0
         $goods->save();
 
         return redirect()->route('goods_index');
