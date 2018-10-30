@@ -13,6 +13,6 @@ class Articlecate extends Model {
 
     protected $table = 'article_caregory';
     // 设置允许字段
-    protected $fillable = ['name','content'];
+    protected $fillable = ['carename','content','article_cate_id'];
 
 }

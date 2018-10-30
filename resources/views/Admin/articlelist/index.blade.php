@@ -81,7 +81,7 @@
          <tr>
           <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
           <td>{{$v->id}}</td>
-          <td>{{$v->article_cate_id}}</td>
+          <td>{{$v->carename}}</td>
           <td>{{$v->title}}</td>
           <td>{{$v->content}}</td>
           <td>{{$v->created_at}}</td>

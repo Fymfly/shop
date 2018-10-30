@@ -30,7 +30,7 @@
     <div class="add_content" id="form-article-add">
      <ul>
       <li class="clearfix Mandatory">
-      <label class="label_name"><i>*</i>分类名称</label><span class="formControls col-10"><input name="name" type="text" id="form-field-1" class="col-xs-10 col-sm-5 "></span>
+      <label class="label_name"><i>*</i>分类名称</label><span class="formControls col-10"><input name="carename" type="text" id="form-field-1" class="col-xs-10 col-sm-5 "></span>
       </li>
       <li class="clearfix"><label class="label_name">分类简介</label>
       <span class="formControls col-10"><script name="content" id="editor" type="text/plain" style="width:100%;height:400px; margin-left:10px;"></script> </span>

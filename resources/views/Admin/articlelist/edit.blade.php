@@ -32,20 +32,22 @@
       <li class="clearfix Mandatory">
       <label class="label_name"><i>*</i>文章标题</label><span class="formControls col-10"><input value="{{$articlelist->title}}" name="title" type="text" id="form-field-1" class="col-xs-10 col-sm-5 "></span>
       </li>
-      <!-- <li class="clearfix Mandatory"><label class="label_name"><i>*</i>文章简介</label>
-      <span class="formControls col-10"><input name="content" type="text" id="form-field-1" class="col-xs-10 col-sm-6 "></span>
-      </li> -->
       <li class="clearfix"><label class="label_name"><i>*</i>所属分类</label>
-       <span class="formControls col-4"><select class="form-control" id="form-field-select-1">
+      <span class="formControls col-4"><select name="article_cate_id" class="form-control" id="form-field-select-1">
           <option value="">--选择所属分类--</option>
-          <option value="1">帮助中心</option>
-          <option value="2">购物指南</option>
-          <option value="3">售后服务</option>
+          @foreach ($articlecate as $v)
+            @if($v->id == $articlelist->article_cate_id) 
+                <option value="{{$v->id}}" selected="selected">{{$v->carename}}</option>
+            @else
+                <option value="{{$v->id}}">{{$v->carename}}</option>
+            @endif
+                
+          @endforeach
        </select>
        </span>
       </li>
       <li class="clearfix"><label class="label_name">文章内容</label>
-      <span class="formControls col-10"><script value="" name="content" id="editor" type="text/plain" style="width:100%;height:400px; margin-left:10px;">{{$articlelist->content}}</script> </span>
+      <span class="formControls col-10"><script name="content" id="editor" type="text/plain" style="width:100%;height:400px; margin-left:10px;">{{$articlelist->content}}</script> </span>
       </li>
      </ul>
     <div class="Button_operation">

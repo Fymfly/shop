@@ -36,11 +36,11 @@
       <span class="formControls col-10"><input name="content" type="text" id="form-field-1" class="col-xs-10 col-sm-6 "></span>
       </li> -->
       <li class="clearfix"><label class="label_name"><i>*</i>所属分类</label>
-       <span class="formControls col-4"><select class="form-control" id="form-field-select-1">
+       <span class="formControls col-4"><select name="article_cate_id" class="form-control" id="form-field-select-1">
           <option value="">--选择所属分类--</option>
-          <option value="1">帮助中心</option>
-          <option value="2">购物指南</option>
-          <option value="3">售后服务</option>
+          @foreach ($articlecate as $v)
+            <option value="{{$v->id}}">{{$v->carename}}</option>
+          @endforeach
        </select>
        </span>
       </li>
@@ -49,11 +49,11 @@
       </li>
      </ul>
     <div class="Button_operation">
-				<button onclick="article_save_submit();" class="btn btn-primary radius" type="submit">保存并提交</button>
-				<button onclick="article_save();" class="btn btn-secondary  btn-warning" type="button">保存草稿</button>
-				<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
-			</div>
-    </div>
+		<button onclick="article_save_submit();" class="btn btn-primary radius" type="submit">保存并提交</button>
+		<button onclick="article_save();" class="btn btn-secondary  btn-warning" type="button">保存草稿</button>
+		<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+	</div>
+</div>
 </form> 
  </div>
 </div>

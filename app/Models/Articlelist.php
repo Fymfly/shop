@@ -13,6 +13,6 @@ class Articlelist extends Model {
 
     protected $table = 'article_list';
     // 设置允许字段
-    protected $fillable = ['title','content','article_cate_id'];
+    protected $fillable = ['title','content','article_cate_id','carename'];
 
 }

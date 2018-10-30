@@ -68,21 +68,6 @@ class MembersController extends Controller
         DB::table('members_grades')
         ->where('members_id',$id)
         ->update(['grade_id'=>$grade_id]);
-            // DB::table('users')
-            // ->where('id', 1)
-            // ->update(['votes' => 1]);
-
-        // 获取用户的id
-        // $members_id = (int)$members->id;
-        // $id = $members->id;
-        // // 获取等级的id
-        // $grade_id = $req->input('grade_id');
-
-        // DB::table('members_grades')
-        //     ->update([
-        //         'id'=>$id,
-        //         'grade_id'=>$grade_id
-        //     ]);
 
         $members->save();
 

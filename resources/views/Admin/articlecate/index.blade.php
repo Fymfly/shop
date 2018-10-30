@@ -53,7 +53,7 @@
          <tr>
           <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
           <td>{{$v->id}}</td>
-          <td>{{$v->name}}</td>
+          <td>{{$v->carename}}</td>
           <td class="displayPart" displayLength="60">{{$v->content}}</td>
           <td>{{$v->created_at}}</td>
           <td>启用</td>          

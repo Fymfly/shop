@@ -47,7 +47,7 @@ class ArticlecateController extends Controller
 
         $articlecate = new Articlecate;
         $articlecate = Articlecate::create( $req->all() );
-
+        // dd($articlecate);
         $articlecate->save();
 
         return redirect()->route('articlecate_index');
