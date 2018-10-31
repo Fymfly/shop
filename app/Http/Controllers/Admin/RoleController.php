@@ -11,10 +11,12 @@ class RoleController extends Controller
     // 显示页面
     public function role_index() {
 
+
+
         return view('admin.role.index');
     }
 
-    // 显示页面
+    // 显示添加
     public function role_create() {
 
         return view('admin.role.create');

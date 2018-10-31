@@ -36,7 +36,8 @@
        <table id="sample-table-1" class="table table-striped table-bordered table-hover">
 		 <thead>
 			<tr>
-			  <th class="center"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
+				<th class="center"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
+				<th>ID</th>
 			  <th>权限名称</th>
 			  <th>对应的地址</th>
               <th>上级ID</th>
@@ -45,17 +46,23 @@
              </tr>
 		    </thead>
              <tbody>
+				@foreach ($privilege as $v)
 			  <tr>
 				<td class="center"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-				<td>超级管理员</td>
-				<td>1</td>
-				<td class="hidden-480">admin</td>
-				<td>拥有至高无上的权利,操作系统的所有权限</td>
-				<td>
-                 <a title="编辑" onclick="Competence_modify('560')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>        
-                 <a title="删除" href="javascript:;"  onclick="Competence_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+				<td>{{$v->id}}</td>
+
+				<td width="500px">
+					<?php echo str_repeat('&nbsp;', 8*$v->level) . $v->pri_name ?>
 				</td>
-			   </tr>										
+				<td>{{$v->url_path}}</td>
+				<td class="hidden-480">{{$v->parent_id}}</td>
+				<td>{{$v->content}}</td>
+				<td>
+            <a title="编辑" href="{{route('privilege_edit',['id'=>$v->id])}}"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>        
+            <a title="删除" onclick="confirm('你确定要删除吗？')" href="{{route('privilege_delete',['id'=>$v->id])}}" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+				</td>
+				 </tr>	
+				@endforeach									
 		      </tbody>
 	        </table>
      </div>

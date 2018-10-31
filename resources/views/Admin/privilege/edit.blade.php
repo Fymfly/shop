@@ -26,26 +26,26 @@
 
 <body>
 <div class="Competence_add_style clearfix">
-<form action="{{route('privilege_docreate')}}" method="post" class="form form-horizontal" id="form-article-add">
+<form action="{{route('privilege_doedit',['id'=>$privilege->id])}}" method="post" class="form form-horizontal" id="form-article-add">
 	@csrf
   <div class="left_Competence_add">
    <div class="title_name">添加权限</div>
     <div class="Competence_add">
 	
      <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限名称 </label>
-       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder=""  name="pri_name" class="col-xs-10 col-sm-5"></div>
+       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder="" value="{{$privilege->pri_name}}"  name="pri_name" class="col-xs-10 col-sm-5"></div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 级别 </label>
-       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder=""  name="level" class="col-xs-10 col-sm-5"></div>
+       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder="" value="{{$privilege->level}}"  name="level" class="col-xs-10 col-sm-5"></div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 允许访问的路径 </label>
-	   <div class="col-sm-9"><input type="text" id="form-field-1" placeholder=""  name="url_path" class="col-xs-10 col-sm-5"></div>
+       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder="" value="{{$privilege->url_path}}"  name="url_path" class="col-xs-10 col-sm-5"></div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 上级ID </label>
-       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder=""  name="parent_id" class="col-xs-10 col-sm-5"></div>
+       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder="" value="{{$privilege->parent_id}}"  name="parent_id" class="col-xs-10 col-sm-5"></div>
 	</div>
      <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限描述 </label>
-      <div class="col-sm-9"><textarea name="content" class="form-control" id="form_textarea"></textarea><span class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span></div>
+      <div class="col-sm-9"><textarea name="content" class="form-control" id="form_textarea">{{$privilege->content}}</textarea><span class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span></div>
 	</div>
 
    </div>
