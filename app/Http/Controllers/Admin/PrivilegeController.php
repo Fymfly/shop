@@ -13,4 +13,11 @@ class PrivilegeController extends Controller
 
         return view('admin.privilege.index');
     }
+
+
+    // 显示添加
+    public function privilege_create() {
+
+        return view('admin.privilege.create');
+    }
 }

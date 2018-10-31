@@ -128,9 +128,51 @@ Route::group(['prefix'=>'admin'],function(){
 
         // 管理员管理-权限管理
         Route::get('/privilege_index','admin\PrivilegeController@privilege_index')->name('privilege_index');
+        // 管理员管理-权限管理（添加显示）
+        Route::get('/privilege_create','admin\PrivilegeController@privilege_create')->name('privilege_create');
+        // 管理员管理-权限管理（处理添加0
+        Route::post('/privilege_docreate','admin\PrivilegeController@privilege_docreate')->name('privilege_docreate');
 
+        // 管理员管理-权限管理（修改显示）
+        Route::get('/privilege_edit/{id}','admin\PrivilegeController@privilege_edit')->name('privilege_edit');
+        // 管理员管理-权限管理（处理修改
+        Route::post('/privilege_doedit/{id}','admin\PrivilegeController@privilege_doedit')->name('privilege_doedit');
+
+        // 管理员管理-权限管理（删除）
+        Route::get('/privilege_delete/{id}','admin\PrivilegeController@privilege_delete')->name('privilege_delete');
+
+        
         // 管理员管理-管理员列表
         Route::get('/admin_index','admin\AdminController@admin_index')->name('admin_index');
+        // 管理员管理-管理员列表（添加显示）
+        Route::get('/admin_create','admin\AdminController@admin_create')->name('admin_create');
+        // 管理员管理-管理员列表（处理添加）
+        Route::post('/admin_docreate','admin\AdminController@admin_docreate')->name('admin_docreate');
+        
+        // 管理员管理-管理员列表（修改显示）
+        Route::get('/admin_edit/{id}','admin\AdminController@admin_edit')->name('admin_edit');
+        // 管理员管理-管理员列表（处理修改）
+        Route::post('/admin_doedit/{id}','admin\AdminController@admin_doedit')->name('admin_doedit');
+
+        // 管理员管理-管理员列表（删除）
+        Route::get('/admin_delete/{id}','admin\AdminController@admin_delete')->name('admin_delete');
+
+
+        // 管理员管理-权限管理
+        Route::get('/role_index','admin\RoleController@role_index')->name('role_index');
+        // 管理员管理-权限管理（添加显示）
+        Route::get('/role_create','admin\RoleController@role_create')->name('role_create');
+        // 管理员管理-权限管理（处理添加0
+        Route::post('/role_docreate','admin\RoleController@role_docreate')->name('role_docreate');
+
+        // 管理员管理-权限管理（修改显示）
+        Route::get('/role_edit/{id}','admin\RoleController@role_edit')->name('role_edit');
+        // 管理员管理-权限管理（处理修改
+        Route::post('/role_doedit/{id}','admin\RoleController@role_doedit')->name('role_doedit');
+
+        // 管理员管理-权限管理（删除）
+        Route::get('/role_delete/{id}','admin\RoleController@role_delete')->name('role_delete');
+
 
         // 管理员管理-个人信息
         Route::get('/personage_index','admin\PersonageController@personage_index')->name('personage_index');

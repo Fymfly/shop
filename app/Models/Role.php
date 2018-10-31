@@ -7,9 +7,9 @@ use Cache;
 use DB;
 
 
-class Admin extends Model {
+class Role extends Model {
 
-    protected $table = 'admin';
+    protected $table = 'role';
     // 设置允许字段
     protected $fillable = ['name','mobile','password','email'];
 

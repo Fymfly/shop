@@ -55,6 +55,7 @@ class GoodsController extends Controller
         return redirect()->route('goods_index');
     }
 
+
     // 显示修改页面
     public function goods_edit($id) {
 

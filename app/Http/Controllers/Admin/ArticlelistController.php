@@ -60,7 +60,6 @@ class ArticlelistController extends Controller
         // dd($articlelist); 
         $articlelist = Articlelist::create( $req->all() );
         
-        // $articlelist->save();
 
         return redirect()->route('articlelist_index');
     }

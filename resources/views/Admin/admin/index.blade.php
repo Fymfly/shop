@@ -41,7 +41,7 @@
     <!--操作-->
      <div class="border clearfix">
        <span class="l_f">
-        <a href="javascript:ovid()" id="administrator_add" class="btn btn-warning"><i class="fa fa-plus"></i> 添加管理员</a>
+        <a href="{{route('admin_create')}}" class="btn btn-warning"><i class="fa fa-plus"></i> 添加管理员</a>
         <a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
        </span>
        <span class="r_f">共：<b>5</b>人</span>
@@ -83,42 +83,23 @@
 			</tr>
 		</thead>
 	<tbody>
+		@foreach ($admin as $v)
      <tr>
       <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-      <td>1</td>
-      <td>admin</td>
-      <td>18934334544</td>
-      <td>2345454@qq.com</td>
-      <td>超级管理员</td>
-      <td>2016-6-29 12:34</td>
+      <td>{{$v->id}}</td>
+      <td>{{$v->name}}</td>
+      <td>{{$v->mobile}}</td>
+      <td>{{$v->email}}</td>
+      <td>{{$v->role_name}}</td>
+      <td>{{$v->created_at}}</td>
       <td class="td-status"><span class="label label-success radius">已启用</span></td>
       <td class="td-manage">
         <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>  
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>       
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+        <a title="编辑" href="{{route('admin_edit',['id'=>$v->id])}}"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>       
+        <a title="删除" href="{{route('admin_delete',['id'=>$v->id])}}"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
        </td>
-     </tr>
-       <tr>
-      <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-      <td>2</td>
-      <td>admin12345</td>
-      <td>18934334544</td>
-      <td>2345454@qq.com</td>
-      <td>管理员</td>
-      <td>2016-6-29 12:34</td>
-      <td class="td-status"><span class="label label-success radius">已启用</span></td>
-      <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>   
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-       </td>
-     </tr>    
-    </tbody>
-    </table>
-      </div>
-     </div>
-  </div>
-</div>
+	 </tr>
+	 @endforeach
  <!--添加管理员-->
  <div id="add_administrator_style" class="add_menber" style="display:none">
     <form action="" method="post" id="form-admin-add">
