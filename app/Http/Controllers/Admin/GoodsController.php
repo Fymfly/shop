@@ -74,4 +74,4 @@ class GoodsController extends Controller
         Goods::destroy($id);
         return redirect()->route('goods_index');
     }
-}
+} 

@@ -24,15 +24,15 @@
 <title>添加角色</title>
 </head>
 
-<body>
+<body> 
 <div class="Competence_add_style clearfix">
-<form action="{{route('role_docreate')}}" method="post" class="form form-horizontal" id="form-article-add">
+<form action="{{route('role_doedit',['id'=>$role->id])}}" method="post" class="form form-horizontal" id="form-article-add">
 @csrf
   <div class="left_Competence_add">
    <div class="title_name">添加角色</div>
     <div class="Competence_add">
      <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
-       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder=""  name="role_name" class="col-xs-10 col-sm-5"></div>
+       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder="" value="{{$role->role_name}}" name="role_name" class="col-xs-10 col-sm-5"></div>
 	</div>
    </div>
    </div>
@@ -41,9 +41,9 @@
       <div class="title_name">角色分配</div>
       <div class="Select_Competence">
 	  	<table width="100%" id="general-table">
-            <tr>@foreach ($role as $v)
+            <tr>@foreach ($pri as $v)
                 <td>
-                    <input type="checkbox" name="pri_id[]" value="<?=$v['id']?>">
+                    <input <?php if(in_array($v['id'], $priIds)) echo 'checked'; ?> type="checkbox" name="pri_id[]" value="<?=$v['id']?>">
 					<?php echo str_repeat('&nbsp;', 8*$v->level) . $v->pri_name ?>
                 </td>
             </tr>@endforeach
@@ -52,7 +52,8 @@
   </div>
   <div class="Button_operation">
 		<button onclick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="fa fa-save "></i> 保存并提交</button>
-		<button onclick="article_save();" class="btn btn-secondary  btn-warning" type="button"><i class="fa fa-reply"></i> 返回上一步</button>
+		<button onclick="article_save();" clas
+		.s="btn btn-secondary  btn-warning" type="button"><i class="fa fa-reply"></i> 返回上一步</button>
 		<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 	</div>
 </form>

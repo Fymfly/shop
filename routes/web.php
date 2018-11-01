@@ -39,7 +39,7 @@ Route::group(['prefix'=>'host'],function(){
     Route::post('/doregist','host\RegisterController@doregist')->name('doregist');
     // 发送短信验证码
     Route::get('/sendmobilecode','host\RegisterController@sendmobilecode')->name('ajax-send-modbile-code');
-
+32
 });
 
 
@@ -65,7 +65,7 @@ Route::group(['prefix'=>'admin'],function(){
         // 产品管理-产品类表（处理修改）
         Route::post('/goods_doedit{id}','admin\GoodsController@goods_doedit')->name('goods_doedit');
 
-        // 产品管理-产品类表（删除）
+        // 产品管理-产品类表（删除）  
         Route::get('/goods_delete/{id}','admin\GoodsController@goods_delete')->name('goods_delete');
 
 
@@ -158,19 +158,19 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/admin_delete/{id}','admin\AdminController@admin_delete')->name('admin_delete');
 
 
-        // 管理员管理-权限管理
+        // 管理员管理-角色管理
         Route::get('/role_index','admin\RoleController@role_index')->name('role_index');
-        // 管理员管理-权限管理（添加显示）
+        // 管理员管理-角色管理（添加显示）
         Route::get('/role_create','admin\RoleController@role_create')->name('role_create');
-        // 管理员管理-权限管理（处理添加0
+        // 管理员管理-角色管理（处理添加）
         Route::post('/role_docreate','admin\RoleController@role_docreate')->name('role_docreate');
 
-        // 管理员管理-权限管理（修改显示）
+        // 管理员管理-角色管理（修改显示）
         Route::get('/role_edit/{id}','admin\RoleController@role_edit')->name('role_edit');
-        // 管理员管理-权限管理（处理修改
+        // 管理员管理-角色管理（处理修改
         Route::post('/role_doedit/{id}','admin\RoleController@role_doedit')->name('role_doedit');
 
-        // 管理员管理-权限管理（删除）
+        // 管理员管理-角色管理（删除）
         Route::get('/role_delete/{id}','admin\RoleController@role_delete')->name('role_delete');
 
 
