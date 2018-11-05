@@ -12,7 +12,9 @@
 <script type="text/javascript" src="/js/Admin/PIE_IE678.js"></script>
 <![endif]-->
 <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="/css/Admin/style.css"/>       
+<link rel="stylesheet" href="/css/Admin/style.css"/>     
+<!-- <link rel="stylesheet" href="/css/Admin/general.css"/>     
+<link rel="stylesheet" href="/css/Admin/main.css"/>        -->
 <link href="/assets/css/codemirror.css" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/ace.min.css" />
       <link rel="stylesheet" href="/Widget/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
@@ -24,6 +26,12 @@
 <link href="/Widget/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
 
 <title>新增图片</title>
+<style>
+    .label {
+
+        font-size: 10px;
+    }
+</style>
 </head>
 <body>
 <div class="clearfix" id="add_picture">
@@ -45,110 +53,169 @@
   </div>
    <div class="page_right_style">
    <div class="type_title">添加商品</div>
-	<form action="{{route('goods_docreate')}}" method="post" class="form form-horizontal" id="form-article-add">
+	<form action="{{route('goods_docreate')}}" method="post" class="form form-horizontal" id="form-article-add" enctype=multipart/form-data>
 		@csrf
-        <div class="clearfix cl">
-         <label class="form-label col-2"><span class="c-red">*</span>图片标题：</label>
-		 <div class="formControls col-10"><input type="text" class="input-text" value="" placeholder="" id="" name=""></div>
-		</div>
-		<div class=" clearfix cl">
-         <label class="form-label col-2">简略标题：</label>
-	     <div class="formControls col-10"><input type="text" class="input-text" value="" placeholder="" id="" name="name"></div>
-		</div>
-		<div class=" clearfix cl">
-			
-			<div class="Add_p_s">
-            <label class="form-label col-2">产品编号：</label>
-			<div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name="num"></div>
+		<h3>基本信息</h3>
+        <table width="100%">
+                <tr>
+                    <td class="label">商品名称:</h4>
+                    <td>
+                        <input type='text' size="80" name='goods_name'>
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">LOGO:</td>
+                    <td>
+                        <input type='file' class="preview" name='logo'>
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">是否上架:</td>
+                    <td>
+                        <input type="radio" name="is_state" value="y" checked> 是
+                        <input type="radio" name="is_state" value="n"> 否
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">商品描述:</td>
+                    <td>
+                        <textarea name="content" id="" cols="80" rows="10"></textarea>
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">所属地区：</td>
+                    <td>
+                        <input type="text" size="80" name="region">
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">一级分类ID:</td>
+                    <td>
+                        <select name="cat1_id">
+                            <option value="">选择一级分类</option>
+                            <?php foreach($category as $v): ?>
+                                <option value="<?=$v['id']?>"><?=$v['category_name']?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">二级分类ID:</td>
+                    <td>
+                        <select name="cat2_id"></select>
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">三级分类ID:</td>
+                    <td>
+                        <select name="cat3_id"></select>
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">品牌ID:</td>
+                    <td>
+                        <span class="formControls col-4"><select name="brand_id" id="">
+                            <option value="">--选择所属品牌--</option>
+                            @foreach ($brand as $v)
+                                <option value="{{$v->id}}">{{$v->name}}</option>
+                            @endforeach
+                        </select></span>
+                    </td>
+                </tr>
+            </table>
+            <br><br><br><hr>
+            <h3>商品属性 <input id="btn-attr" type="button" value="添加一个属性"></h3>
+            <div id="attr-container">
+                <table width="100%">
+                    <tr>
+                        <td class="label">属性名称:</td>
+                        <td>
+                            <input type='text' size="80" name='attr_name[]'>
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">属性值:</td>
+                        <td>
+                            <input type='text' size="80" name='attr_value[]'>
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"></td>
+                        <td>
+                            <input onclick="del_attr(this)" type="button" value="删除">
+                        </td>
+                    </tr>
+                </table>
             </div>
-			<div class="Add_p_s">
-             <label class="form-label col-2">产&nbsp;&nbsp;&nbsp;&nbsp;地：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name="region"></div>
-			</div>
-            <div class="Add_p_s">
-             <label class="form-label col-2">材&nbsp;&nbsp;&nbsp;&nbsp;质：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name=""></div>
-			</div>
-            <div class="Add_p_s">
-             <label class="form-label col-2">品&nbsp;&nbsp;&nbsp;&nbsp;牌：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name=""></div>
-			</div>
-             <div class="Add_p_s">
-             <label class="form-label col-2">产品重量：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name="" >kg</div>
-			</div>
-             <div class="Add_p_s">
-             <label class="form-label col-2">单位：</label>	
-			 <div class="formControls col-2"><span class="select-box">
-				<select class="select">
-					<option>请选择</option>
-					<option value="1">件</option>
-					<option value="2">斤</option>
-					<option value="3">KG</option>
-					<option value="4">吨</option>
-					<option value="5">套</option>
-				</select>
-				</span></div>
-			</div>
-            <div class="Add_p_s">
-             <label class="form-label col-2">展示价格：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name="present_price" >元</div>
-			</div>
-            <div class="Add_p_s">
-             <label class="form-label col-2">市场价格：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name="original_price" >元</div>
-			</div>
-           
-			
-		</div>
-		
-		<div class="clearfix cl">
-			<label class="form-label col-2">关键词：</label>
-			<div class="formControls col-10">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
-			</div>
-		</div>
-		<div class="clearfix cl">
-			<label class="form-label col-2">内容摘要：</label>
-			<div class="formControls col-10">
-				<textarea name="" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)"></textarea>
-				<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
-			</div>
-		</div>
-		
-		<div class="clearfix cl">
-			<label class="form-label col-2">图片上传：</label>
-			<div class="formControls col-10">
-				<div class="uploader-list-container"> 
-					<div class="queueList">
-						<div id="dndArea" class="placeholder">
-							<div id="filePicker-2"></div>
-							<p>或将照片拖到这里，单次最多可选300张</p>
-						</div>
-					</div>
-					<div class="statusBar" style="display:none;">
-						<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
-						<div class="info"></div>
-						<div class="btns">
-							<div id="filePicker2"></div>
-							<div class="uploadBtn">开始上传</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-         <div class="clearfix cl">
-         <label class="form-label col-2">详细内容：</label>
-			<div class="formControls col-10">
-				<script id="editor" type="text/plain" style="width:100%;height:400px;"></script> 
-             </div>
-        </div>
-        <div class="clearfix cl">
-         <label class="form-label col-2">允许评论：</label>
-			<div class="formControls col-2 skin-minimal">
-			 <div class="check-box" style=" margin-top:9px"><input type="checkbox" id="checkbox-1"><label for="checkbox-1">&nbsp;</label></div>
-             </div>
-        </div>
+            <br><br><br><hr>
+            <h3>商品图片 <input id="btn-image" type="button" value="添加一个图片"></h3>
+            <div id="image-container">
+                <table width="100%">
+                    <tr>
+                        <td class="label"></td>
+                        <td>
+                            <input class="preview" type='file' name='image[]'>
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"></td>
+                        <td>
+                            <input onclick="del_attr(this)" type="button" value="删除">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br><br><br><hr>
+            <h3>SKU <input id="btn-sku" type="button" value="添加一个sku"></h3>
+            <div id="sku-container">
+                <table width="100%">
+                    <tr>
+                        <td class="label">SKU名称:</td>
+                        <td>
+                            <input type='text' size="80" name='sku_name[]'>
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">库存量:</td>
+                        <td>
+                            <input type='text' size="80" name='stock[]'>
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">原价:</td>
+                        <td>
+                            ￥ <input type='text' size="10" name='original_price[]'> 元
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">现价:</td>
+                        <td>
+                            ￥ <input type='text' size="10" name='present_price[]'> 元
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"></td>
+                        <td>
+                            <input onclick="del_attr(this)" type="button" value="删除">
+                        </td>
+                    </tr>
+                </table>
+            </div>
 		<div class="clearfix cl">
 			<div class="Button_operation">
 				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="icon-save "></i>保存并提交审核</button>
@@ -176,6 +243,7 @@
 <script src="/js/Admin/lrtk.js" type="text/javascript" ></script>
 <script type="text/javascript" src="/js/Admin/H-ui.js"></script> 
 <script type="text/javascript" src="/js/Admin/H-ui.admin.js"></script> 
+<script type="text/javascript" src="/js/Admin/img_preview.js"></script>
 <script>
 $(function() { 
 	$("#add_picture").fix({
@@ -950,6 +1018,183 @@ $(function(){
     });
 
 })( jQuery );
+
+
+var attrStr = `<hr><table width="100%"><tbody>
+                <tr>
+                    <td class="label">属性名称:</td>
+                    <td>
+                        <input type='text' size="80" name='attr_name[]'>
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">属性值:</td>
+                    <td>
+                        <input type='text' size="80" name='attr_value[]'>
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"></td>
+                    <td>
+                        <input onclick="del_attr(this)" type="button" value="删除">
+                    </td>
+                </tr>
+            </tbody></table>`;
+
+$("#btn-attr").click(function(){
+    $("#attr-container").append(attrStr)
+});
+
+function del_attr(o)
+{
+    if(confirm("确定要删除吗？"))
+    {
+        var table = $(o).parent().parent().parent().parent()
+        table.prev('hr').remove()
+        table.remove()
+    }
+    
+}
+
+
+var imageStr = `<hr><table width="100%"><tbody>
+                    <tr>
+                        <td class="label"></td>
+                        <td>
+                            <input class="preview" type='file' name='image[]'>
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"></td>
+                        <td>
+                            <input onclick="del_attr(this)" type="button" value="删除">
+                        </td>
+                    </tr>
+                </tbody></table>`
+
+// 为添加按钮绑定事件
+$("#btn-image").click(function(){
+
+    // 添加一个图片
+    $("#image-container").append(imageStr)
+
+
+    // 绑定预览事件
+    $(".preview").change(function(){
+        // 获取选择的图片
+        var file = this.files[0];
+        // 转成字符串
+        var str = getObjectUrl(file);
+        // 先删除上一个
+        $(this).prev('.img_preview').remove();
+        // 在框的前面放一个图片
+        $(this).before("<div class='img_preview'><img src='"+str+"' width='120' height='120'></div>");
+    });
+});
+
+var skuStr = `<hr><table width="100%"><tbody>
+                    <tr>
+                        <td class="label">SKU名称:</td>
+                        <td>
+                            <input type='text' size="80" name='sku_name[]'>
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">库存量:</td>
+                        <td>
+                            <input type='text' size="80" name='stock[]'>
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">价格:</td>
+                        <td>
+                            ￥ <input type='text' size="10" name='original_price[]'> 元
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">现价:</td>
+                        <td>
+                            ￥ <input type='text' size="10" name='present_price[]'> 元
+                            <font color="red">*</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"></td>
+                        <td>
+                            <input onclick="del_attr(this)" type="button" value="删除">
+                        </td>
+                    </tr>
+                </tbody></table>`
+
+// 为添加按钮绑定事件
+$("#btn-sku").click(function(){
+
+    // 添加一个图片
+    $("#sku-container").append(skuStr)
+});
+
+
+//  三级联动
+$("select[name=cat1_id]").change(function(){
+              // 取出以及分类时的id
+              var id = $(this).val();
+              console.log(id);
+              if(id!=""){
+                //   console.log("11");
+                  $.ajax({
+                      url:"{{route('linkage')}}?id="+id,
+                      type:"GET",
+                    //   date:{id},
+                      dataType:"json",
+                      success:function(data){
+                        //   console.log(data);
+                          var str = "";
+                          for(var i=0;i<data.length;i++){
+                            str += '<option value="'+data[i].id+'">'+data[i].category_name+'</option>';
+                            console.log(str);
+                          }
+                          $("select[name=cat2_id]").html(str)
+                          // 触发第二个框的 change 事件
+                          $("select[name=cat2_id]").trigger('change');
+                      }
+                  })
+              }else{
+                $("select[name=cat2_id]").html("")
+                $("select[name=cat3_id]").html("")
+              }
+        })  
+
+
+          $("select[name=cat2_id]").change(function(){
+              // 取出以及分类时的id
+              var id = $(this).val();
+            //   console.log(id);
+              if(id!=""){
+                //   console.log("11");
+                  $.ajax({
+                      url:"{{route('linkage')}}?id="+id,
+                      type:"GET",
+                    //   date:{id},
+                      dataType:"json",
+                      success:function(data){
+                          var str = "";
+                          for(var i=0;i<data.length;i++){
+                            str += '<option value="'+data[i].id+'">'+data[i].category_name+'</option>';
+                          }
+                          $("select[name=cat3_id]").html(str)
+                          // 触发第二个框的 change 事件
+                          $("select[name=cat3_id]").trigger('change');
+                      }
+                  })
+              }
+        })
+
 </script>
 </body>
 </html>

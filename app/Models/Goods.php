@@ -11,6 +11,6 @@ class Goods extends Model {
 
     protected $table = 'goods';
     // 设置允许字段
-    protected $fillable = ['num','name','original_price','present_price','region'];
+    protected $fillable = ['logo','goods_name','content','region','cat1_id','cat2_id','cat3_id','brand_id'];
 
 }

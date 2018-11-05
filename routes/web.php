@@ -39,7 +39,7 @@ Route::group(['prefix'=>'host'],function(){
     Route::post('/doregist','host\RegisterController@doregist')->name('doregist');
     // 发送短信验证码
     Route::get('/sendmobilecode','host\RegisterController@sendmobilecode')->name('ajax-send-modbile-code');
-32
+
 });
 
 
@@ -59,14 +59,20 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/goods_create','admin\GoodsController@goods_create')->name('goods_create');
         // 产品管理-产品类表（处理增加）
         Route::post('/goods_docreate','admin\GoodsController@goods_docreate')->name('goods_docreate');
+        // 产品管理-产品类表（处理增加属性）
+        Route::post('/goods_attribute','admin\GoodsController@goods_attribute')->name('goods_attribute');
 
         // 产品管理-产品类表（修改页面）
         Route::get('/goods_edit/{id}','admin\GoodsController@goods_edit')->name('goods_edit');
         // 产品管理-产品类表（处理修改）
         Route::post('/goods_doedit{id}','admin\GoodsController@goods_doedit')->name('goods_doedit');
 
-        // 产品管理-产品类表（删除）  
+        // 产品管理-产品类表（删除）
         Route::get('/goods_delete/{id}','admin\GoodsController@goods_delete')->name('goods_delete');
+
+
+        // 三级联动（添加页面）
+        Route::get('/linkage','admin\GoodsController@linkage')->name('linkage');
 
 
 
