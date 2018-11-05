@@ -21,16 +21,22 @@ Route::get('/hello2','TestController@hello');
 // 前
 Route::group(['prefix'=>'host'],function(){
 
-    // 首页
-    Route::get('/','host\IndexController@index')->name('index'); 
+    Route::middleware(['login'])->group(function() {
 
+        // 首页
+        Route::get('/','host\IndexController@index')->name('index'); 
+    });
 
+    
     // 显示登录页面
     Route::get('/login','host\LoginController@login')->name('login');
     // 处理登录表单
     Route::post('/dologin','host\LoginController@dologin')->name('dologin');
     // 退出登录
     Route::get('/logout','host\LoginController@logout')->name('logout');
+
+
+    // 
 
 
     // 显示注册页面
@@ -47,7 +53,7 @@ Route::group(['prefix'=>'host'],function(){
 // 后
 Route::group(['prefix'=>'admin'],function(){
 
-    Route::middleware(['login'])->group(function() {
+    Route::middleware(['alogin'])->group(function() {
 
         // 首页
         Route::get('/','admin\IndexController@index')->name('aindex');

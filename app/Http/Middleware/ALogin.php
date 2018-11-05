@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Login
+class ALogin
 {
     /**
      * Handle an incoming request.
@@ -14,13 +14,12 @@ class Login
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {      
+    {
 
         if(!session('id')) {
 
-            return redirect()->route('login');
+            return redirect()->route('alogin');
         }
-
         return $next($request);
     }
 }
