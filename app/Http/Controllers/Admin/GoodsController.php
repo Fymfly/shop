@@ -145,8 +145,15 @@ class GoodsController extends Controller
         // 根据ID取出要修改的数据
         $goods = Goods::find($id);
 
+        $category = Category::get();
+        $brand = Brand::get();
+        $attribute = Attribute::get();
+
         return view('admin.goods.edit',[
             'goods' => $goods,
+            'category' => $category,
+            'brand' => $brand,
+            'attribute' => $attribute,
         ]);
     }
 
