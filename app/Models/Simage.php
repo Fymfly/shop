@@ -23,30 +23,36 @@ class Simage extends Model
 
                 // $Image = new Image;
                 $date = date('Y-m-d');
-                $url = $req->file('image')[$k]->store('uploads/goods/bigImg/'.$date);
+                $big_url = $req->file('image')[$k]->store('/goods/bigImg/'.$date);
+                // dd($big_url);
                 $path = $req->image[$k]->path();
                 Image::configure(array('driver'=>'gd'));
                 $img = Image::make($path);
+                // dd($img);
                 // 上传大图，等比例
-                $img->resize(100,null,function($c){
+                $img->resize(800,null,function($c){
                     $c->aspectRatio();
                 });
+                // dd(public_path('/uploads/goods/bigImg/'.$date));
                 @mkdir(public_path('uploads/goods/bigImg/'.$date),0777,true);
-                $img->save(public_path($url));
+                
+                $img->save(public_path('/uploads/'.$big_url));
 
                 // 上传小图 等比例
                 $img->resize(400,null,function($c){
                     $c->aspectRatio();
                 });
-                $smImg = str_replace('uploads/goods/bigImg/'.$date.'/','uploads/goods/smImg/'.$date.'/',$url);
-
+                $sm_url = $req->file('image')[$k]->store('/goods/smImg/'.$date);
+                // dd($sm_url);
                 @mkdir(public_path('uploads/goods/smImg/'.$date),0777,true);
 
-                $img->save(public_path($smImg));
+                $img->save(public_path('uploads/'.$sm_url));
 
                 DB::table('goods_image')
-                    ->insert(['goods_id'=>$goods_id,'smlImage'=>$smImg,'bigImage'=>$url]);
+                    ->insert(['goods_id'=>$goods_id,'smlImage'=>$sm_url,'bigImage'=>$big_url]);
             }
         }
+
+
     }
 }

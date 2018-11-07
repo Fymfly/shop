@@ -114,7 +114,9 @@ class GoodsController extends Controller
         $brand = Brand::get();
 
         $category = new Category;
-        $category = Category::where('parent_id',null)->get();
+        $category = Category::where('parent_id',0)->get();
+
+        // dd($category);
 
         return view('admin.goods.create',[
             'brand' => $brand,

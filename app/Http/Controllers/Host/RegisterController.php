@@ -65,7 +65,7 @@ class RegisterController extends Controller
         // 拼出缓存的名字
         $name = 'code-'.$req->mobile;
         // 再根据名字取出验证码
-        $code = Cache::get($name);
+        $code = Cache::get($name); 
         if(!$code || $code != $req->mobile_code) {
 
             return back()->withErrors(['mobile_code'=>'验证码错误！']);

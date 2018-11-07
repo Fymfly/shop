@@ -25,6 +25,11 @@ Route::group(['prefix'=>'host'],function(){
 
         // 首页
         Route::get('/','host\IndexController@index')->name('index'); 
+
+        // 商品列表页
+        Route::get('/goods_list/{id}','host\GoodsController@goods_list')->name('goods_list');
+        // 商品详情页
+        Route::get('/goods/{id}','host\GoodsController@goods')->name('goods');
     });
 
     
@@ -34,7 +39,7 @@ Route::group(['prefix'=>'host'],function(){
     Route::post('/dologin','host\LoginController@dologin')->name('dologin');
     // 退出登录
     Route::get('/logout','host\LoginController@logout')->name('logout');
-
+ 
 
     // 
 
