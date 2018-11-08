@@ -71,7 +71,18 @@ Route::group(['prefix'=>'admin'],function(){
         // 产品管理-产品类表（处理增加）
         Route::post('/goods_docreate','admin\GoodsController@goods_docreate')->name('goods_docreate');
         // 产品管理-产品类表（处理增加属性）
-        Route::post('/goods_attribute','admin\GoodsController@goods_attribute')->name('goods_attribute');
+        // Route::post('/goods_attribute','admin\GoodsController@goods_attribute')->name('goods_attribute');
+
+
+        // 显示sku添加页面
+        Route::get('/goods_sku_create','admin\GoodsController@goods_sku_create')->name('goods_sku_create');
+        // 处理sku添加
+        Route::post('goods_sku_docreate','admin\GoodsController@goods_sku_docreate')->name('goods_sku_docreate');
+        // 添加属性值
+        Route::post('goods_attrkey','admin\GoodsController@goods_attrkey')->name('goods_attrkey');
+        // 添加属性val
+        Route::post('goods_attrval','admin\GoodsController@goods_attrval')->name('goods_attrval');
+
 
         // 产品管理-产品类表（修改页面）
         Route::get('/goods_edit/{id}','admin\GoodsController@goods_edit')->name('goods_edit');

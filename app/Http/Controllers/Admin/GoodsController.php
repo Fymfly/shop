@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Goods;
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Attribute;
+use App\Models\Attribute_key;
+use App\Models\Attribute_val;
 use App\Models\Sku;
 use App\Models\Simage;
 use DB;
@@ -67,34 +68,6 @@ class GoodsController extends Controller
         // dd($goods);
         $goods->save();
 
-        $attribute = new Attribute;
-        // dd($req->all());die;
-        $goods_id = $goods->id;
-        $attr_name = $req->attr_name;
-        $attr_value = $req->attr_value;
-        $addAttr = [];
-        $addAttr['goods_id']=$goods_id;
-        $addAttr['attr_name']=$attr_name;
-        $addAttr['attr_value']=$attr_value;
-        // dd($addAttr);die;
-        
-        $attribute->goods_attribute($addAttr);
-
-        $Sku = new Sku;
-        $goods_id = $goods->id;
-        $sku_name = $req->sku_name;
-        $stock = $req->stock;
-        $original_price = $req->original_price;
-        $present_price = $req->present_price;
-        $addSku = [];
-        $addSku['goods_id']=$goods_id;
-        $addSku['sku_name']=$sku_name;
-        $addSku['stock']=$stock;
-        $addSku['original_price']=$original_price;
-        $addSku['present_price']=$present_price;
-        // dd($addSku);die;
-
-        $Sku->goods_sku($addSku);
 
         $Image = new Simage;
         $goods_id = $goods->id;
@@ -164,6 +137,74 @@ class GoodsController extends Controller
     public function goods_delete($id) {
 
         Goods::destroy($id);
+        return redirect()->route('goods_index');
+    }
+
+
+    // sku
+
+    public function goods_sku_create(){
+        $id = $_GET['id'];
+        // dd($goods_id);
+        // 这个商品id的所有规格
+        $attribute_key = Attribute_key::where('goods_id',$id)->get();
+        return view("admin.goods.sku",[
+            'attribute_key'=>$attribute_key,
+            'id'=>$id
+        ]);
+    }
+
+    public function goods_attrkey(Request $request){
+        $attribute_key = new Attribute_key;
+        $attribute_key->goods_id = $request->id;
+        // dd($request->id);
+        $attribute_key->attr_name = $request->name;
+        $attribute_key->save();
+
+    }
+
+    public function goods_attrval(Request $request){
+        
+        $attribute_val = new Attribute_val;
+        
+        $attribute_val->attr_key_id = $request->id;
+        
+        // dd($request->id);
+        $attribute_val->attr_val =  $request->sepcval;
+        $attribute_val->save();
+
+    }
+   
+    public function goods_sku_docreate(Request $req){
+        $id = $_GET['id'];
+        // 1.根据商品id取出规格id
+        $ids = [];
+        $attribute_key = Attribute_key::where('goods_id',$id)->get()->toArray();
+       
+        // dd($req->all());
+        $data =  $req->skus;
+        // dd($data);
+        foreach ($data as $key => $value) {
+            // dd($value);
+            $sku = new Sku;
+            $sku->goods_id = $req->id;
+            $sku->sku_name = $value['sku_name'];
+            $sku->stock = $value['stock'];
+            $sku->original_price = $value['original_price'];
+            $sku->present_price = $value['present_price'];
+            // 拼接 规格组合
+            $sku_all = [];
+            foreach ($value['specs'] as $k => $v) {
+                $sku_all[]= $k.':'.$v;
+            }
+            $sku_all = implode('-',$sku_all);
+
+            $sku->sku_all = $sku_all;
+            # code...
+            // dd($sku);
+            $sku->save();
+
+        }
         return redirect()->route('goods_index');
     }
 } 

@@ -94,6 +94,7 @@
         <td class="td-manage">
         <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
         <a title="编辑" href="{{route('goods_edit', ['id'=>$v->id])}}"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
+		<a title="sku" href="{{route('goods_sku_create', ['id'=>$v->id])}}"  class="btn btn-xs btn-info" >sku</i></a> 
         <a title="删除" onclick="confirm('你确定要删除吗？')" href="{{route('goods_delete', ['id'=>$v->id])}}" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
        </td>
 	   <!-- onclick="confirm('你确定要删除吗？')" -->

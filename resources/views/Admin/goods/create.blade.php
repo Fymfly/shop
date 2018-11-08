@@ -132,31 +132,6 @@
                 </tr>
             </table>
             <br><br><br><hr>
-            <h3>商品属性 <input id="btn-attr" type="button" value="添加一个属性"></h3>
-            <div id="attr-container">
-                <table width="100%">
-                    <tr>
-                        <td class="label">属性名称:</td>
-                        <td>
-                            <input type='text' size="80" name='attr_name[]'>
-                            <font color="red">*</font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">属性值:</td>
-                        <td>
-                            <input type='text' size="80" name='attr_value[]'>
-                            <font color="red">*</font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label"></td>
-                        <td>
-                            <input onclick="del_attr(this)" type="button" value="删除">
-                        </td>
-                    </tr>
-                </table>
-            </div>
             <br><br><br><hr>
             <h3>商品图片 <input id="btn-image" type="button" value="添加一个图片"></h3>
             <div id="image-container">
@@ -165,46 +140,6 @@
                         <td class="label"></td>
                         <td>
                             <input class="preview" type='file' name='image[]'>
-                            <font color="red">*</font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label"></td>
-                        <td>
-                            <input onclick="del_attr(this)" type="button" value="删除">
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <br><br><br><hr>
-            <h3>SKU <input id="btn-sku" type="button" value="添加一个sku"></h3>
-            <div id="sku-container">
-                <table width="100%">
-                    <tr>
-                        <td class="label">SKU名称:</td>
-                        <td>
-                            <input type='text' size="80" name='sku_name[]'>
-                            <font color="red">*</font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">库存量:</td>
-                        <td>
-                            <input type='text' size="80" name='stock[]'>
-                            <font color="red">*</font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">原价:</td>
-                        <td>
-                            ￥ <input type='text' size="10" name='original_price[]'> 元
-                            <font color="red">*</font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">现价:</td>
-                        <td>
-                            ￥ <input type='text' size="10" name='present_price[]'> 元
                             <font color="red">*</font>
                         </td>
                     </tr>
