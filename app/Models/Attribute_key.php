@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
+
 class Attribute_key extends Model
 {
     protected $fillable = ['attr_name','goods_id'];

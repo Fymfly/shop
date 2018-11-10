@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// 商品详情页sku
+Route::get('getAllGoodsSku','host\GoodsController@getAllGoodsSku');
+
+Route::get('getAllGoodsSku','host\GoodsController@getAllGoodsSku');

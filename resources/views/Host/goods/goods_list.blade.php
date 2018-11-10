@@ -359,7 +359,7 @@
 								<div class="price">
 									<strong>
 											<em>¥</em>
-											<i>{{$v->present_price}}</i>
+											<i>{{$v->price}}</i>
 										</strong>
 								</div>
 								<div class="attr">

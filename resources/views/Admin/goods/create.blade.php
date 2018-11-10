@@ -65,6 +65,13 @@
                     </td>
                 </tr>
                 <tr>
+                    <td class="label">商品价格:</h4>
+                    <td>
+                        <input type='text' size="80" name='price'>
+                        <font color="red">*</font>
+                    </td>
+                </tr>
+                <tr>
                     <td class="label">LOGO:</td>
                     <td>
                         <input type='file' class="preview" name='logo'>

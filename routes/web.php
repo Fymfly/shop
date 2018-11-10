@@ -23,14 +23,16 @@ Route::group(['prefix'=>'host'],function(){
 
     Route::middleware(['login'])->group(function() {
 
-        // 首页
-        Route::get('/','host\IndexController@index')->name('index'); 
-
-        // 商品列表页
-        Route::get('/goods_list/{id}','host\GoodsController@goods_list')->name('goods_list');
-        // 商品详情页
-        Route::get('/goods/{id}','host\GoodsController@goods')->name('goods');
+        
     });
+
+    // 首页
+    Route::get('/','host\IndexController@index')->name('index'); 
+
+    // 商品列表页
+    Route::get('/goods_list/{id}','host\GoodsController@goods_list')->name('goods_list');
+    // 商品详情页
+    Route::get('/goods/{id}','host\GoodsController@goods')->name('goods');
 
     
     // 显示登录页面

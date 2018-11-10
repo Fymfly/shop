@@ -71,8 +71,7 @@
 				<th width="80px">产品编号</th>
 				<th width="80px">LOGO</th>
 				<th width="250px">产品名称</th>
-				<th width="100px">原价格</th>
-				<th width="100px">现价</th>
+				<th width="100px">价格</th>
                 <th width="100px">所属地区/国家</th>				
 				<th width="180px">加入时间</th>
 				<th width="70px">状态</th>                
@@ -86,8 +85,7 @@
         <td width="80px"><?php echo $v->id; ?></td>               
 		<td width="80px"><img src="{{ Storage::url( $v->logo) }}" width="100" height="100"></td>               
         <td width="250px"><u style="cursor:pointer" class="text-primary" onclick=""><?php echo $v->goods_name; ?></u></td>
-        <td width="100px"><?php echo $v->original_price; ?></td>
-        <td width="100px"><?php echo $v->present_price; ?></td> 
+        <td width="100px"><?php echo $v->price; ?></td>
         <td width="100px"><?php echo $v->region; ?></td>         
         <td width="180px"><?php echo $v->created_at; ?></td>
         <td class="text-l"><?php echo $v->is_audit; ?></td>

@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>产品详情页</title>
-	 <link rel="icon" href="assets/img/favicon.ico">
+	<link rel="icon" href="assets/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/css/Host//webbase.css" />
     <link rel="stylesheet" type="text/css" href="/css/Host//pages-item.css" />
@@ -212,56 +212,25 @@
 							</div>
 						</div>
 					</div>
-					<div class="clearfix choose">
+					<div class="clearfix choose" id="sku">
+					
 						<div id="specification" class="summary-wrap clearfix">
+						@foreach ($attr_val as $k=>$v)
 							<dl>
+							   
 								<dt>
 									<div class="fl title">
-									<i>选择颜色</i>
-								</div>
+
+									    <i>{{$v->attr_name}}</i>
+								    </div>
 								</dt>
-								<dd><a href="javascript:;" class="selected">{{$attribute->attr_value}}<span title="点击取消选择">&nbsp;</span></a></dd>
+								@foreach($list[$k] as $t)
+								<dd><a href="javascript:;" class="choose" data-attrkey="{{$k}}">{{$t}}<span title="点击取消选择">&nbsp;</span></a>
+								</dd>
+								@endforeach
+ 
 							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>内存容量</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">16G<span title="点击取消选择">&nbsp;</span></a></dd>
-								<dd><a href="javascript:;">64G</a></dd>
-								<dd><a href="javascript:;" class="locked">128G</a></dd>
-							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>选择版本</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">公开版<span title="点击取消选择">&nbsp;</span></a></dd>
-								<dd><a href="javascript:;">移动版</a></dd>							
-							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>购买方式</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">官方标配<span title="点击取消选择">&nbsp;</span></a></dd>
-								<dd><a href="javascript:;">移动优惠版</a></dd>	
-								<dd><a href="javascript:;"  class="locked">电信优惠版</a></dd>
-							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>套　　装</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">保护套装<span title="点击取消选择">&nbsp;</span></a></dd>
-								<dd><a href="javascript:;"  class="locked">充电套装</a></dd>	
-								
-							</dl>
-							
+							@endforeach	
 							
 						</div>
 					
@@ -955,6 +924,26 @@ $(function(){
 <script type="text/javascript" src="/js/Host//plugins/jquery.jqzoom/jquery.jqzoom.js"></script>
 <script type="text/javascript" src="/js/Host//plugins/jquery.jqzoom/zoom.js"></script>
 <script type="text/javascript" src="index/index.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+	var getAbc=document.querySelectorAll(".choose");
+	for(let i=0;i<getAbc.length;i++){
+		getAbc[i].onclick=function(){
+		// console.log('sfsdf');
+			let attrkey = getAbc[i].dataset.attrkey
+			for(let j=0;j<getAbc.length;j++){
+				if(getAbc[j].dataset.attrkey == attrkey){
+					getAbc[j].style.borderTop = "1px solid #eee";
+					getAbc[j].style.borderBottom = "1px solid #eee";
+					getAbc[j].style.borderLeft = "1px solid #bbb";
+					getAbc[j].style.borderRight = "1px solid #bbb";
+				}
+			}
+			getAbc[i].style.border = "1px solid red";
+	    }
+	}
+</script>
 
 
 <!--页面底部  结束 -->
