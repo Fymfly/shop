@@ -225,7 +225,7 @@
 								    </div>
 								</dt>
 								@foreach($list[$k] as $t)
-								<dd><a href="javascript:;" class="choose" data-attrkey="{{$k}}">{{$t}}<span title="点击取消选择">&nbsp;</span></a>
+								<dd><a href="javascript:;" class="choise" data-attrkey="{{$k}}">{{$t}}<span title="点击取消选择">&nbsp;</span></a>
 								</dd>
 								@endforeach
  
@@ -927,7 +927,7 @@ $(function(){
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
-	var getAbc=document.querySelectorAll(".choose");
+	var getAbc=document.querySelectorAll(".choise");
 	for(let i=0;i<getAbc.length;i++){
 		getAbc[i].onclick=function(){
 		// console.log('sfsdf');
